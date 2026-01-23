@@ -16,7 +16,7 @@
     background: #1e293b;
     padding: 20px;
     margin: 20px auto;
-    max-width: 650px;
+    max-width: 700px;
     border-radius: 10px;
   }
   input {
@@ -49,9 +49,10 @@
   <button onclick="openRoom(1)">Escape Room 1</button>
   <button onclick="openRoom(2)">Escape Room 2</button>
   <button onclick="openRoom(3)">Escape Room 3</button>
+  <button onclick="openRoom(4)">Escape Room 4</button>
 
   <h3>🔢 Eindcode</h3>
-  <input id="finalCode" maxlength="3" placeholder="code" />
+  <input id="finalCode" maxlength="4" placeholder="code" />
   <br />
   <button onclick="checkFinal()">Check code</button>
 
@@ -100,8 +101,21 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
+<!-- ESCAPE ROOM 4 -->
+<div class="room" id="room4">
+  <h2>Escape Room 4 – Kortingssommen</h2>
+  <p>Bereken hoeveel je betaalt na korting.</p>
+  <p>1) Helm kost €40, korting 29% → <input id="r4q1" /> €</p>
+  <p>2) Jas kost €120, korting 15% → <input id="r4q2" /> €</p>
+  <p>3) Schoenen €75, korting 20% → <input id="r4q3" /> €</p>
+  <p>4) Rugzak €60, korting 35% → <input id="r4q4" /> €</p>
+  <button onclick="checkRoom4()">Check</button>
+  <p id="r4result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
 <script>
-const code = ["3", "6", "9"];
+const code = ["3", "6", "9", "8"]; // nieuwe 4-cijferige code
 
 function openRoom(n) {
   document.getElementById("home").style.display = "none";
@@ -112,55 +126,64 @@ function goHome() {
   location.reload();
 }
 
+// Room 1
 function checkRoom1() {
   const answers = [15, 8, 16, 6, 13, 5, 10, 12];
-  for (let i = 1; i <= 8; i++) {
-    if (document.getElementById("r1q" + i).value != answers[i - 1]) {
+  for (let i=1;i<=8;i++){
+    if(document.getElementById("r1q"+i).value != answers[i-1]){
       document.getElementById("r1result").innerText = "❌ Niet alles klopt";
       return;
     }
   }
-  document.getElementById("r1result").innerHTML =
-    "✅ Goed! Jouw cijfer is <b>3</b>";
+  document.getElementById("r1result").innerHTML = "✅ Goed! Jouw cijfer is <b>3</b>";
 }
 
+// Room 2
 function checkRoom2() {
   const answers = [40, 48, 90];
-  for (let i = 1; i <= 3; i++) {
-    if (document.getElementById("r2q" + i).value != answers[i - 1]) {
+  for (let i=1;i<=3;i++){
+    if(document.getElementById("r2q"+i).value != answers[i-1]){
       document.getElementById("r2result").innerText = "❌ Probeer opnieuw";
       return;
     }
   }
-  document.getElementById("r2result").innerHTML =
-    "✅ Goed gedaan! Jouw cijfer is <b>6</b>";
+  document.getElementById("r2result").innerHTML = "✅ Goed gedaan! Jouw cijfer is <b>6</b>";
 }
 
+// Room 3
 function checkRoom3() {
   const straalCorrect = [20, 10, 5, 7];
   const oppCorrect = [1256, 314, 78.5, 153.86];
 
-  for (let i = 1; i <= 4; i++) {
-    const straalInput = parseFloat(document.getElementById("r3r" + i).value);
-    const oppInput = parseFloat(document.getElementById("r3q" + i).value);
+  for(let i=1;i<=4;i++){
+    const straalInput = parseFloat(document.getElementById("r3r"+i).value);
+    const oppInput = parseFloat(document.getElementById("r3q"+i).value);
 
-    if (
-      straalInput !== straalCorrect[i - 1] ||
-      Math.abs(oppInput - oppCorrect[i - 1]) > 0.1
-    ) {
-      document.getElementById("r3result").innerText =
-        "❌ Niet alles klopt. Check je straal en oppervlakte.";
+    if(straalInput !== straalCorrect[i-1] || Math.abs(oppInput - oppCorrect[i-1]) > 0.1){
+      document.getElementById("r3result").innerText = "❌ Niet alles klopt. Check je straal en oppervlakte.";
       return;
     }
   }
-  document.getElementById("r3result").innerHTML =
-    "✅ Goed gedaan! Jouw cijfer is <b>9</b>";
+  document.getElementById("r3result").innerHTML = "✅ Goed gedaan! Jouw cijfer is <b>9</b>";
 }
 
-function checkFinal() {
-  if (document.getElementById("finalCode").value === code.join("")) {
-    document.getElementById("victory").innerHTML =
-      "<span class='success'>🏆 VICTORY! 🏆</span>";
+// Room 4 – korting berekenen
+function checkRoom4() {
+  const answers = [28.4, 102, 60, 39]; // correct afgerond naar 2 decimalen of hele euro's
+  for(let i=1;i<=4;i++){
+    const input = parseFloat(document.getElementById("r4q"+i).value);
+    if(Math.abs(input - answers[i-1]) > 0.1){
+      document.getElementById("r4result").innerText = "❌ Niet alles klopt, check je berekening.";
+      return;
+    }
+  }
+  document.getElementById("r4result").innerHTML = "✅ Goed gedaan! Jouw cijfer is <b>8</b>";
+}
+
+// Eindcode
+function checkFinal(){
+  if(document.getElementById("finalCode").value === code.join("")){
+    document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
   } else {
     document.getElementById("victory").innerText = "❌ Foute code";
   }
