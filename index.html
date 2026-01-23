@@ -1,5 +1,3 @@
-
-You said:
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -80,6 +78,36 @@ You said:
     background: #444; color: #fff;
     margin-top: 8px;
   }
+
+  /* Scrollbaar verhaalvak */
+  #story {
+    display: none;
+    position: fixed;
+    left: 10px;
+    bottom: 60px;
+    width: 350px;
+    height: 400px;
+    background: rgba(0,0,0,0.95);
+    color: #f1f1f1;
+    padding: 15px;
+    border: 2px solid #ff4747;
+    border-radius: 10px;
+    overflow-y: scroll;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    z-index: 999;
+  }
+  #story h2 { color: #ff4747; }
+  #story p { margin-bottom: 15px; }
+
+  /* Verhaal knop */
+  #storyBtn {
+    position: fixed; left: 10px; bottom: 10px; 
+    padding: 10px 15px; 
+    background: #ff4747; color: white; 
+    border: none; border-radius: 6px; cursor: pointer; z-index: 1000;
+  }
+
 </style>
 </head>
 <body>
@@ -111,7 +139,7 @@ You said:
   <p id="victory"></p>
 </div>
 
-<!-- ROOM 1 -->
+<!-- ROOMS (1 t/m 7) -->
 <div class="room" id="room1">
   <h2>Escape Room 1 – Het Pad naar de Hel</h2>
   <p>1) 3x + 5 = 50 → x = <input id="r1q1"></p>
@@ -127,7 +155,6 @@ You said:
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 2 (Breuken) -->
 <div class="room" id="room2">
   <h2>Escape Room 2 – De Kamer van de Duistere Breuken</h2>
   <p>1) 1/2 + 3/4 = <input id="r2q1"></p>
@@ -139,7 +166,6 @@ You said:
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 3 (Omrekeningen) -->
 <div class="room" id="room3">
   <h2>Escape Room 3 – Het Doolhof van Omrekeningen</h2>
   <p>1) Hoeveel liter is 10 milliliter? → <input id="r3q1"> L</p>
@@ -151,7 +177,6 @@ You said:
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 4 -->
 <div class="room" id="room4">
   <h2>Escape Room 4 – De Zaal der Kortingen</h2>
   <p>1) €40 met 29% korting → <input id="r4q1"> €</p>
@@ -163,7 +188,6 @@ You said:
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 5 -->
 <div class="room" id="room5">
   <h2>Escape Room 5 – De Val van de Procenten</h2>
   <p>1) 15% van 80 → <input id="r5q1"> €</p>
@@ -174,7 +198,6 @@ You said:
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 6 -->
 <div class="room" id="room6">
   <h2>Escape Room 6 – De Tafel van de Tijden</h2>
   <table style="margin: auto; border:1px solid white; margin-bottom: 15px;">
@@ -191,35 +214,49 @@ You said:
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 7: De Gouden Code -->
 <div class="room" id="room7">
   <h2>Escape Room 7 – De Gouden Code</h2>
-
   <p>1) Wat is de uitkomst van 3²?</p>
   <input id="r7q1">
-
   <p>2) Wat is √81?</p>
   <input id="r7q2">
-
   <p>3) Wat is de uitkomst van: 5 × (6 − 3)?</p>
   <input id="r7q3">
-
   <p>4) Als 2 kopjes suiker gelijk zijn aan 3 kopjes meel, hoeveel kopjes meel heb je dan nodig voor 6 kopjes suiker?</p>
   <input id="r7q4">
-
   <p>5) Als 3 appels gelijk zijn aan 4 sinaasappels, hoeveel appels heb je dan nodig voor 12 sinaasappels?</p>
   <input id="r7q5">
-
   <button onclick="checkRoom7()">Check</button>
   <p id="r7result"></p>
   <button onclick="goHome()">Terug</button>
+</div>
+
+<!-- VERHAAL -->
+<button id="storyBtn" onclick="toggleStory()">📜 Verhaal</button>
+<div id="story">
+<h2>Het Verhaal van de Pyramide van de Duivel</h2>
+<p>
+Lang geleden, diep in de duistere woestijn, stond een vergeten piramide die door niemand betreden durfde te worden. Men zei dat hij de ziel van elke onvoorzichtige avonturier gevangen hield in een labyrint van raadsels en wiskundige vallen. 
+</p>
+<p>
+Jarenlang werd de piramide door verhalen omgeven: wie alle kamers oploste en de cijfers correct verzamelde, zou de legendarische Gouden Code ontdekken, een code die rijkdom, kennis én gevaarlijke krachten combineerde. 
+</p>
+<p>
+Jij bent nu die dappere avonturier. Iedere kamer die je betreedt test niet alleen je verstand, maar ook je doorzettingsvermogen. Van het Pad naar de Hel, vol met lineaire puzzels, tot de Kamer van de Duistere Breuken, en het Doolhof van Omrekeningen, elke uitdaging brengt je dichter bij de ultieme waarheid.
+</p>
+<p>
+De lucht wordt zwaarder, de muren lijken te ademen, en schaduwen fluisteren waarschuwingen. Alleen wie scherp van geest is, zal het laatste cijfer vinden en de Gouden Code ontgrendelen. Durf jij het avontuur te voltooien en de geheimen van de piramide te onthullen?
+</p>
+<p>
+De piramide wacht… en de tijd tikt…
+</p>
 </div>
 
 <script>
 // 7-cijferige code
 const code = ["3","6","9","8","5","7","1"];
 
-// Room checks (rest blijft hetzelfde)
+// Room checks
 function checkRoom1(){
   const ans = [15,8,16,6,13,5,10,12];
   for(let i=1;i<=8;i++){
@@ -293,21 +330,15 @@ function openRoom(n) {
   document.getElementById("home").style.display = "none";
   document.getElementById("room" + n).style.display = "block";
 }
+function goHome() { location.reload(); }
 
-function goHome() {
-  location.reload();
-}
-
-// Kladblok toggle functies
+// Kladblok functies
 function toggleNotepad() {
   const notepad = document.getElementById("notepad");
   notepad.style.display = notepad.style.display === "block" ? "none" : "block";
 }
+function closeNotepad() { document.getElementById("notepad").style.display = "none"; }
 
-function closeNotepad() {
-  document.getElementById("notepad").style.display = "none";
-}
-</script>
-
-</body>
-</html>
+// Verhaal toggle
+function toggleStory() {
+  const story = document
