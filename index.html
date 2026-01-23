@@ -238,6 +238,16 @@ function toggleVerhaal() {
   }
 }
 
+// Functies voor het openen van kamers
+function openRoom(roomId) {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("room" + roomId).style.display = "block";
+}
+
+function goHome() {
+  location.reload();
+}
+
 // Functies voor de escape room checks
 function checkRoom1(){
   const ans = [15,8,16,6,13,5,10,12];
@@ -273,4 +283,3 @@ function closeNotepad() {
 
 </body>
 </html>
-
