@@ -1,200 +1,161 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Pyramide van de Duivel🔥👹</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      color: #f1f1f1;
-      text-align: center;
-      padding: 20px;
-      background-image: url('https://wallpapers.com/images/featured-full/hell-u3m1j19m00av0kyt.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-    h1, h3 {
-      font-family: 'Impact', sans-serif;
-      color: #ff4747;
-      text-shadow: 2px 2px 6px black;
-    }
-    h1 { font-size: 48px; }
-    h3 { font-size: 24px; margin-bottom: 20px; }
+<meta charset="UTF-8" />
+<title>Pyramide van de Duivel🔥👹</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    background-image: url('https://wallpapers.com/images/featured-full/hell-u3m1j19m00av0kyt.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  h1, h3 {
+    font-family: 'Impact', sans-serif;
+    color: #ff4747;
+    text-shadow: 2px 2px 6px black;
+  }
+  h1 { font-size: 48px; }
+  h3 { font-size: 24px; margin-bottom: 20px; }
 
-    .room {
-      display: none;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
-      border-radius: 12px;
-      border: 2px solid #ff4747;
-    }
-    input {
-      padding: 6px;
-      width: 90px;
-      font-size: 16px;
-      background: #2e1f30;
-      color: #fff;
-      border: 1px solid #ff4747;
-      border-radius: 5px;
-    }
-    button {
-      padding: 10px 22px;
-      margin: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      background: #ff4747;
-      border: 1px solid #fff;
-      border-radius: 6px;
-      color: white;
-    }
-    button:hover {
-      background: #ff1e1e;
-    }
-    .success {
-      color: #22c55e; font-size: 28px; font-weight: bold;
-      text-shadow: 2px 2px 8px black;
-    }
+  .room {
+    display: none;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    border-radius: 12px;
+    border: 2px solid #ff4747;
+  }
+  input {
+    padding: 6px;
+    width: 90px;
+    font-size: 16px;
+    background: #2e1f30;
+    color: #fff;
+    border: 1px solid #ff4747;
+    border-radius: 5px;
+  }
+  button {
+    padding: 10px 22px;
+    margin: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #ff4747;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    color: white;
+  }
+  button:hover {
+    background: #ff1e1e;
+  }
+  .success {
+    color: #22c55e; font-size: 28px; font-weight: bold;
+    text-shadow: 2px 2px 8px black;
+  }
 
-    /* Kladblok */
-    #notepad {
-      position: fixed;
-      left: 10px; top: 10px;
-      width: 250px; height: 320px;
-      background: #111;
-      border: 2px solid #444;
-      padding: 10px;
-      display: none;
-      border-radius: 8px;
-    }
-    #notepad textarea {
-      width: 100%; height: 80%;
-      background: #222; color: #fff;
-      border: none; font-size: 16px;
-    }
-    #notepad button {
-      background: #444; color: #fff;
-      margin-top: 8px;
-    }
+  /* Verhaal sectie */
+  #story {
+    position: fixed;
+    left: 10px; bottom: 10px;
+    width: 300px; height: 300px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #444;
+    padding: 10px;
+    display: none;
+    border-radius: 8px;
+    overflow-y: scroll;
+  }
+  #story h2 {
+    font-size: 18px;
+    color: #ff4747;
+    margin-top: 0;
+  }
+  #story p {
+    font-size: 16px;
+    color: #f1f1f1;
+    margin-bottom: 10px;
+  }
+  #story button {
+    background: #444; color: #fff;
+    margin-top: 8px;
+  }
 
-    /* Verhaal knop en verhaal box */
-    #verhaalButton {
-      position: fixed;
-      left: 10px;
-      bottom: 10px;
-      background-color: #ff4747;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-    }
-    #verhaalButton:hover {
-      background: #ff1e1e;
-    }
+  /* Kladblok */
+  #notepad {
+    position: fixed;
+    left: 10px; top: 10px;
+    width: 250px; height: 320px;
+    background: #111;
+    border: 2px solid #444;
+    padding: 10px;
+    display: none;
+    border-radius: 8px;
+  }
+  #notepad textarea {
+    width: 100%; height: 80%;
+    background: #222; color: #fff;
+    border: none; font-size: 16px;
+  }
+  #notepad button {
+    background: #444; color: #fff;
+    margin-top: 8px;
+  }
 
-    #verhaal {
-      position: fixed;
-      left: 10px;
-      bottom: 60px;
-      width: 300px;
-      height: 300px;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 10px;
-      border: 2px solid #ff4747;
-      display: none;
-      border-radius: 10px;
-      overflow-y: scroll; /* Zorgt ervoor dat het verhaal kan worden gescrold */
-    }
-
-    /* Introductie scherm */
-    #introScreen {
-      position: fixed;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      text-align: center;
-      padding-top: 150px;
-      display: block;
-    }
-    #introScreen button {
-      background-color: #ff4747;
-      padding: 15px 30px;
-      font-size: 20px;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #introScreen button:hover {
-      background: #ff1e1e;
-    }
-  </style>
+</style>
 </head>
 <body>
 
-<!-- Introductie Scherm -->
-<div id="introScreen">
-  <h1>Welkom bij de Pyramide van de Duivel 🔥👹</h1>
-  <p>In deze escape room moet je alle kamers oplossen om de **cijfers te verzamelen** en te ontsnappen uit de greep van de Duivel. Het is een **race tegen de tijd**, dus wees snel en slim!</p>
-  <button onclick="startGame()">Start de uitdaging!</button>
+<!-- VERHAAL -->
+<button onclick="toggleStory()">📖 Verhaal</button>
+<div id="story">
+  <h2>Het Verhaal van de Pyramide van de Duivel</h2>
+  <p>Je bent als groep van avonturiers en studenten in een mysterieus en verlaten land aangekomen. Het is een plek waar het duistere verleden de lucht lijkt te bedekken. Van de lokale bevolking wordt verteld dat deze streek wordt beheerst door een eeuwenoude kracht, de Duivel, die zijn macht verbergt in een verloren pyramide. Iedereen die ooit de piramide binnenging, is nooit meer teruggekeerd.</p>
+  <p><b>De missie:</b></p>
+  <p>Op een dag ontdek je een oude kaart die naar de pyramide leidt. Volgens de legende bevat de piramide een verborgen kracht die alle kennis van de wereld kan bevatten. Het lijkt het ideale moment voor een groep avonturiers zoals jij om de piramide te verkennen. Maar iets klopt niet. De kaarten zijn verwrongen, de markeringen lijken te veranderen en de mensen die er eerder probeerden te ontsnappen, zijn verdwenen. Wat ligt er werkelijk verborgen in de pyramide?</p>
+  <p>Als je eenmaal de ingang bereikt, voel je dat er iets kwaadaardigs aanwezig is. De lucht is dik van onheil, de gangen schreeuwen om hulp en je voelt de goden van het oude kwaad je volgen. Wat je niet wist, is dat je niet zomaar een gewone exploratie maakt, maar dat de piramide de ziel van degenen die het betreden probeert te vangen. De duivelse kracht is nog altijd actief, en het lijkt wel alsof de tijd zelf wordt vertraagd.</p>
+  <p><b>Het doel:</b></p>
+  <p>Je hebt maar één kans om de piramide te ontsnappen en de kracht van de Duivel te overwinnen. Maar er is een probleem: de piramide is gevuld met valstrikken, raadsels en dodevallen die je geest en wil uitdagen. De Duivel houdt je vast en speelt met je gedachten. Maar jij hebt iets dat de Duivel niet had voorzien – je slimme geest.</p>
+  <p>Je moet raadsels oplossen, wiskundige formules gebruiken en je moed tonen om jezelf en je team te bevrijden. Als je faalt, is er geen weg terug. En als de tijd opraakt, zal de kracht van de Duivel je voor altijd gevangen houden in zijn duistere wereld.</p>
+  <p><b>Het einde (Victory):</b></p>
+  <p>Je hebt de raadsels opgelost, de laatste deur is geopend en je denkt dat je gered bent. Maar er is nog één ding dat je moet doen. Vul de code in die je door de kamers hebt verzameld om de ultieme deur te ontsluiten. Deze deur zal je definitief bevrijden, en de piramide zal zijn macht verliezen. De Duivel zal niet langer regeren.</p>
+  <p>Het verhaal wordt afgesloten met de laatste overwinning – je hebt niet alleen de duivelse piramide overwonnen, maar ook de kracht van de kennis en samenwerking.</p>
+  <button onclick="closeStory()">Sluit Verhaal</button>
 </div>
 
-<!-- Verhaal Knop en Verhaal Box -->
-<button id="verhaalButton" onclick="toggleVerhaal()">Verhaal</button>
-<div id="verhaal">
-  <h3>Verhaal: Pyramide van de Duivel 🔥👹</h3>
-  <p>
-    Je bent als groep van avonturiers en studenten in een mysterieus en verlaten land aangekomen. Het is een plek waar het **duistere verleden** de lucht lijkt te bedekken. Van de lokale bevolking wordt verteld dat deze streek wordt beheerst door een eeuwenoude kracht, de **Duivel**, die zijn macht verbergt in een verloren **pyramide**. Iedereen die ooit de piramide binnenging, is nooit meer teruggekeerd.
-  </p>
-  <p>
-    Op een dag ontdek je een oude **kaart** die naar de piramide leidt. Volgens de legende bevat de piramide een **verborgen kracht** die alle kennis van de wereld kan bevatten. Het lijkt het ideale moment voor een groep avonturiers zoals jij om de piramide te verkennen. Maar iets klopt niet. De kaarten zijn verwrongen, de markeringen lijken te veranderen en de mensen die er eerder probeerden te ontsnappen, zijn verdwenen. **Wat ligt er werkelijk verborgen in de pyramide?**
-  </p>
-  <p>
-    Je hebt maar één kans om de piramide te ontsnappen en **de kracht van de Duivel** te overwinnen. Maar er is een probleem: de piramide is gevuld met **valstrikken, raadsels en dodevallen** die je geest en wil uitdagen. De **Duivel** houdt je vast en speelt met je gedachten. Maar jij hebt iets dat de Duivel niet had voorzien – **je slimme geest**.
-  </p>
-  <p>
-    Je moet **raadsels oplossen, wiskundige formules gebruiken en je moed tonen** om jezelf en je team te bevrijden. **Als je faalt, is er geen weg terug**. En als de tijd opraakt, zal de **kracht van de Duivel** je voor altijd gevangen houden in zijn duistere wereld.
-  </p>
-  <p>
-    Je hebt de raadsels opgelost, de laatste deur is geopend en je denkt dat je gered bent. Maar er is nog één ding dat je moet doen. **Vul de code in die je door de kamers hebt verzameld** om de ultieme deur te ontsluiten. Deze deur zal je **definitief bevrijden**, en de piramide zal zijn macht verliezen. **De Duivel zal niet langer regeren**.
-  </p>
+<!-- KLADLOK -->
+<button onclick="toggleNotepad()">📝 Kladblok</button>
+<div id="notepad">
+  <textarea id="notes" placeholder="Schrijf je sommen hier..."></textarea>
+  <button onclick="closeNotepad()">Sluit</button>
 </div>
 
 <!-- HOME -->
-<div id="home" style="display:none;">
+<div id="home">
   <h1>Pyramide van de Duivel🔥👹</h1>
   <p><b>Los alle escape rooms op en verzamel de cijfers om te ontsnappen!</b></p>
 
-  <button onclick="openRoom(1)">Escape Room 1: De Kamer van de Verloren Zielen</button>
-  <button onclick="openRoom(2)">Escape Room 2: De Kamer van de Breuken en Fragmenten</button>
-  <button onclick="openRoom(3)">Escape Room 3: De Kamer van Omrekeningen en Duistere Krachten</button>
-  <button onclick="openRoom(4)">Escape Room 4: De Kamer van de Duivelse Rekeningen</button>
-  <button onclick="openRoom(5)">Escape Room 5: De Kamer van de Zonden en Procenten</button>
-  <button onclick="openRoom(6)">Escape Room 6: De Kamer van de Duivelse Aftelling</button>
+  <button onclick="openRoom(1)">Escape Room 1</button>
+  <button onclick="openRoom(2)">Escape Room 2</button>
+  <button onclick="openRoom(3)">Escape Room 3</button>
+  <button onclick="openRoom(4)">Escape Room 4</button>
+  <button onclick="openRoom(5)">Escape Room 5</button>
+  <button onclick="openRoom(6)">Escape Room 6</button>
 
   <h3>🔢 Eindcode</h3>
   <input id="finalCode" maxlength="6" placeholder="code" />
   <br>
   <button onclick="checkFinal()">Check code</button>
   <p id="victory"></p>
-
-  <!-- Kladblok Knop en Notepad -->
-  <button onclick="toggleNotepad()">📝 Kladblok</button>
-  <div id="notepad">
-    <textarea id="notes" placeholder="Schrijf je berekeningen hier..."></textarea>
-    <button onclick="closeNotepad()">Sluit</button>
-  </div>
 </div>
 
 <!-- ROOM 1 -->
 <div class="room" id="room1">
-  <h2>Escape Room 1 – De Kamer van de Verloren Zielen</h2>
+  <h2>Escape Room 1 – Lineaire Vergelijkingen</h2>
   <p>1) 3x + 5 = 50 → x = <input id="r1q1"></p>
   <p>2) 2x + 4 = 20 → x = <input id="r1q2"></p>
   <p>3) x − 7 = 9 → x = <input id="r1q3"></p>
@@ -208,13 +169,13 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 2 (Breuken) -->
+<!-- ROOM 2 -->
 <div class="room" id="room2">
-  <h2>Escape Room 2 – De Kamer van de Breuken en Fragmenten</h2>
-  <p>1) 1/2 + 1/4 = <input id="r2q1"></p>
+  <h2>Escape Room 2 – Breuken</h2>
+  <p>1) 1/2 + 3/4 = <input id="r2q1"></p>
   <p>2) 3/5 − 1/5 = <input id="r2q2"></p>
-  <p>3) 2/3 × 1/4 = <input id="r2q3"></p>
-  <p>4) 5/6 ÷ 1/2 = <input id="r2q4"></p>
+  <p>3) 2/3 × 3/4 = <input id="r2q3"></p>
+  <p>4) 5/6 ÷ 2/3 = <input id="r2q4"></p>
   <button onclick="checkRoom2()">Check</button>
   <p id="r2result"></p>
   <button onclick="goHome()">Terug</button>
@@ -222,50 +183,91 @@
 
 <!-- ROOM 3 -->
 <div class="room" id="room3">
-  <h2>Escape Room 3 – De Kamer van Omrekeningen en Duistere Krachten</h2>
-  <p>1) 100m = ?cm → x = <input id="r3q1"></p>
-  <p>2) 5L = ?ml → x = <input id="r3q2"></p>
-  <p>3) 12kg = ?g → x = <input id="r3q3"></p>
-  <p>4) 10km = ?m → x = <input id="r3q4"></p>
+  <h2>Escape Room 3 – Omrekeningen</h2>
+  <p>1) Hoeveel liter is 10 milliliter? → <input id="r3q1"> L</p>
+  <p>2) Hoeveel centimeter is 5 meter? → <input id="r3q2"> cm</p>
+  <p>3) 1000 gram = <input id="r3q3"> kilogram</p>
+  <p>4) 25 kilometer = <input id="r3q4"> meter</p>
   <button onclick="checkRoom3()">Check</button>
   <p id="r3result"></p>
   <button onclick="goHome()">Terug</button>
 </div>
 
+<!-- ROOM 4 -->
+<div class="room" id="room4">
+  <h2>Escape Room 4 – Kortingssommen</h2>
+  <p>1) €40 met 29% korting → <input id="r4q1"> €</p>
+  <p>2) €120 met 15% korting → <input id="r4q2"> €</p>
+  <p>3) €75 met 20% korting → <input id="r4q3"> €</p>
+  <p>4) €60 met 35% korting → <input id="r4q4"> €</p>
+  <button onclick="checkRoom4()">Check</button>
+  <p id="r4result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
+<!-- ROOM 5 -->
+<div class="room" id="room5">
+  <h2>Escape Room 5 – Procentensommen</h2>
+  <p>1) 15% van 80 → <input id="r5q1"> €</p>
+  <p>2) 25% korting op €120 → <input id="r5q2"> €</p>
+  <p>3) 40% van 250 → <input id="r5q3"> €</p>
+  <button onclick="checkRoom5()">Check</button>
+  <p id="r5result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
+<!-- ROOM 6 -->
+<div class="room" id="room6">
+  <h2>Escape Room 6 – Tabel Lezen</h2>
+  <table style="margin: auto; border:1px solid white; margin-bottom: 15px;">
+    <tr><th>Maand</th><th>Aantal auto's</th></tr>
+    <tr><td>Januari</td><td>150</td></tr>
+    <tr><td>Februari</td><td>120</td></tr>
+    <tr><td>Maart</td><td>130</td></tr>
+    <tr><td>April</td><td>140</td></tr>
+  </table>
+  <p>1) Totaal jan–mrt → <input id="r6q1"></p>
+  <p>2) Gemiddelde per maand → <input id="r6q2"></p>
+  <button onclick="checkRoom6()">Check</button>
+  <p id="r6result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
 <script>
-// Introductie scherm starten
-function startGame() {
-  document.getElementById("introScreen").style.display = "none";
-  document.getElementById("home").style.display = "block";
+// 6-cijferige code
+const code = ["3","6","9","8","5","7"];
+
+// Verhaal functionaliteit
+function toggleStory() {
+  const story = document.getElementById("story");
+  story.style.display = story.style.display === "block" ? "none" : "block";
 }
 
-// Toggle voor het verhaal
-function toggleVerhaal() {
-  const verhaalBox = document.getElementById("verhaal");
-  if (verhaalBox.style.display === "none" || verhaalBox.style.display === "") {
-    verhaalBox.style.display = "block";
-  } else {
-    verhaalBox.style.display = "none";
-  }
+function closeStory() {
+  document.getElementById("story").style.display = "none";
 }
 
-// Functies voor het openen van kamers
-function openRoom(roomId) {
-  // Hide home and all rooms first
+// Room functies
+function openRoom(n) {
   document.getElementById("home").style.display = "none";
-  for (let i = 1; i <= 6; i++) {
-    document.getElementById("room" + i).style.display = "none";
-  }
-  
-  // Show selected room
-  document.getElementById("room" + roomId).style.display = "block";
+  document.getElementById("room"+n).style.display = "block";
 }
 
 function goHome() {
   location.reload();
 }
 
-// Functies voor de escape room checks
+// Kladblok toggle functies
+function toggleNotepad() {
+  const notepad = document.getElementById("notepad");
+  notepad.style.display = notepad.style.display === "block" ? "none" : "block";
+}
+
+function closeNotepad() {
+  document.getElementById("notepad").style.display = "none";
+}
+
+// Room checks
 function checkRoom1(){
   const ans = [15,8,16,6,13,5,10,12];
   for(let i=1;i<=8;i++){
@@ -274,38 +276,11 @@ function checkRoom1(){
   document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>";
 }
 
-function checkRoom2(){
-  const ans=[3/4,2/5,1/6,5/3];
-  for(let i=1;i<=4;i++){
-    if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
-  }
-  document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";
+function checkFinal(){
+  const userCode=document.getElementById("finalCode").value;
+  if(userCode===code.join("")) document.getElementById("victory").innerHTML="<span class='success'>🏆 VICTORY! 🏆</span>";
+  else document.getElementById("victory").innerText="❌ Foute code!";
 }
-
-function checkRoom3(){
-  const ans = [1000,5000,12000,10000];
-  for (let i = 1; i <= 4; i++) {
-    if (parseFloat(document.getElementById("r3q" + i).value) !== ans[i - 1]) {
-      return document.getElementById("r3result").innerText = "❌ Probeer opnieuw";
-    }
-  }
-  document.getElementById("r3result").innerHTML = "✅ Jouw cijfer: <b>4</b>";
-}
-
-// Kladblok functies
-function toggleNotepad() {
-  const notepad = document.getElementById("notepad");
-  if (notepad.style.display === "none" || notepad.style.display === "") {
-    notepad.style.display = "block";
-  } else {
-    notepad.style.display = "none";
-  }
-}
-
-function closeNotepad() {
-  document.getElementById("notepad").style.display = "none";
-}
-
 </script>
 
 </body>
