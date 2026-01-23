@@ -1,3 +1,5 @@
+
+You said:
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -9,7 +11,7 @@
     color: #f1f1f1;
     text-align: center;
     padding: 20px;
-    background-image: url('https://images.unsplash.com/photo-1610450539791-4de6ff39cf87?auto=format&fit=crop&w=1470&q=80');
+    background-image: url('https://wallpapers.com/images/featured-full/hell-u3m1j19m00av0kyt.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -21,19 +23,6 @@
   }
   h1 { font-size: 48px; }
   h3 { font-size: 24px; margin-bottom: 20px; }
-
-  .story {
-    background: rgba(0,0,0,0.75);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid #ff4747;
-    font-size: 18px;
-    line-height: 1.5;
-  }
 
   .room {
     display: none;
@@ -95,17 +84,6 @@
 </head>
 <body>
 
-<!-- Verhaal -->
-<div class="story">
-  <h2>🕯️ Verhaal van de Pyramide van de Duivel 🕯️</h2>
-  <p>
-    Je werd wakker op een hete, rokerige vlakte. Voor je rees een gigantische piramide op, gehuld in vurige gloed en omringd door lavastromen.  
-    Stemmen fluisterden dat alleen de slimste en snelste geesten konden ontsnappen. Binnenin wachten zeven duistere kamers vol wiskundige raadsels, breuken, percentages en geheime codes.  
-    Elke fout kan je eeuwig vasthouden in deze hel. Verzamel de cijfers in elke escape room en ontsluit de eindcode om de poorten van de hel te openen.  
-    Durf jij de Pyramide van de Duivel te trotseren en terug te keren naar de wereld van de levenden?
-  </p>
-</div>
-
 <!-- KLADLOK -->
 <button onclick="toggleNotepad()">📝 Kladblok</button>
 <div id="notepad">
@@ -149,7 +127,7 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 2 -->
+<!-- ROOM 2 (Breuken) -->
 <div class="room" id="room2">
   <h2>Escape Room 2 – De Kamer van de Duistere Breuken</h2>
   <p>1) 1/2 + 3/4 = <input id="r2q1"></p>
@@ -161,7 +139,7 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 3 -->
+<!-- ROOM 3 (Omrekeningen) -->
 <div class="room" id="room3">
   <h2>Escape Room 3 – Het Doolhof van Omrekeningen</h2>
   <p>1) Hoeveel liter is 10 milliliter? → <input id="r3q1"> L</p>
@@ -213,39 +191,122 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 7 -->
+<!-- ROOM 7: De Gouden Code -->
 <div class="room" id="room7">
   <h2>Escape Room 7 – De Gouden Code</h2>
+
   <p>1) Wat is de uitkomst van 3²?</p>
   <input id="r7q1">
+
   <p>2) Wat is √81?</p>
   <input id="r7q2">
+
   <p>3) Wat is de uitkomst van: 5 × (6 − 3)?</p>
   <input id="r7q3">
+
   <p>4) Als 2 kopjes suiker gelijk zijn aan 3 kopjes meel, hoeveel kopjes meel heb je dan nodig voor 6 kopjes suiker?</p>
   <input id="r7q4">
+
   <p>5) Als 3 appels gelijk zijn aan 4 sinaasappels, hoeveel appels heb je dan nodig voor 12 sinaasappels?</p>
   <input id="r7q5">
+
   <button onclick="checkRoom7()">Check</button>
   <p id="r7result"></p>
   <button onclick="goHome()">Terug</button>
 </div>
 
 <script>
-// Code + room checks + navigatie + kladblok
-const code=["3","6","9","8","5","7","1"];
-function checkRoom1(){const a=[15,8,16,6,13,5,10,12];for(let i=1;i<=8;i++){if(document.getElementById("r1q"+i).value!=a[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw";}document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>";}
-function checkRoom2(){const a=[1.25,1,1.5,2];for(let i=1;i<=4;i++){if(parseFloat(document.getElementById("r2q"+i).value)!=a[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";}document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";}
-function checkRoom3(){const a=[0.01,500,1,25000];for(let i=1;i<=4;i++){if(parseFloat(document.getElementById("r3q"+i).value)!=a[i-1]) return document.getElementById("r3result").innerText="❌ Probeer opnieuw";}document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>";}
-function checkRoom4(){const a=[28.4,102,60,39];for(let i=1;i<=4;i++){if(Math.abs(parseFloat(document.getElementById("r4q"+i).value)-a[i-1])>0.1) return document.getElementById("r4result").innerText="❌ Probeer opnieuw";}document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>8</b>";}
-function checkRoom5(){const a=[12,90,100];for(let i=1;i<=3;i++){if(parseFloat(document.getElementById("r5q"+i).value)!=a[i-1]) return document.getElementById("r5result").innerText="❌ Probeer opnieuw";}document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>";}
-function checkRoom6(){const t=400,a=135;if(parseFloat(document.getElementById("r6q1").value)!=t||parseFloat(document.getElementById("r6q2").value)!=a)return document.getElementById("r6result").innerText="❌ Probeer opnieuw";document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>";}
-function checkRoom7(){const a=[9,9,15,9,9];for(let i=1;i<=5;i++){if(parseFloat(document.getElementById("r7q"+i).value)!==a[i-1]) return document.getElementById("r7result").innerText="❌ Probeer opnieuw";}document.getElementById("r7result").innerHTML="✅ Jouw cijfer: <b>10</b>";}
-function checkFinal(){const u=document.getElementById("finalCode").value;if(u===code.join(""))document.getElementById("victory").innerHTML="<span class='success'>🏆 VICTORY! 🏆</span>";else document.getElementById("victory").innerText="❌ Foute code!";}
-function openRoom(n){document.getElementById("home").style.display="none";document.getElementById("room"+n).style.display="block";}
-function goHome(){location.reload();}
-function toggleNotepad(){const n=document.getElementById("notepad");n.style.display=n.style.display==="block"?"none":"block";}
-function closeNotepad(){document.getElementById("notepad").style.display="none";}
+// 7-cijferige code
+const code = ["3","6","9","8","5","7","1"];
+
+// Room checks (rest blijft hetzelfde)
+function checkRoom1(){
+  const ans = [15,8,16,6,13,5,10,12];
+  for(let i=1;i<=8;i++){
+    if(document.getElementById("r1q"+i).value!=ans[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>";
+}
+
+function checkRoom2(){
+  const ans=[1.25,1,1.5,2];
+  for(let i=1;i<=4;i++){
+    if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";
+}
+
+function checkRoom3(){
+  const ans=[0.01,500,1,25000];
+  for(let i=1;i<=4;i++){
+    if(parseFloat(document.getElementById("r3q"+i).value)!=ans[i-1]) return document.getElementById("r3result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>";
+}
+
+function checkRoom4(){
+  const ans=[28.4,102,60,39];
+  for(let i=1;i<=4;i++){
+    if(Math.abs(parseFloat(document.getElementById("r4q"+i).value)-ans[i-1])>0.1) return document.getElementById("r4result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>8</b>";
+}
+
+function checkRoom5(){
+  const ans=[12,90,100];
+  for(let i=1;i<=3;i++){
+    if(parseFloat(document.getElementById("r5q"+i).value)!=ans[i-1]) return document.getElementById("r5result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>";
+}
+
+function checkRoom6(){
+  const total=400;
+  const avg=135;
+  if(parseFloat(document.getElementById("r6q1").value)!=total||parseFloat(document.getElementById("r6q2").value)!=avg)
+    return document.getElementById("r6result").innerText="❌ Probeer opnieuw";
+  document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>";
+}
+
+function checkRoom7() {
+  const ans = [9, 9, 15, 9, 9];
+  for (let i = 1; i <= 5; i++) {
+    if (parseFloat(document.getElementById("r7q" + i).value) !== ans[i - 1]) {
+      return document.getElementById("r7result").innerText = "❌ Probeer opnieuw";
+    }
+  }
+  document.getElementById("r7result").innerHTML = "✅ Jouw cijfer: <b>10</b>";
+}
+
+// Eindcode check
+function checkFinal() {
+  const userCode = document.getElementById("finalCode").value;
+  if (userCode === code.join("")) {
+    document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
+  } else {
+    document.getElementById("victory").innerText = "❌ Foute code!";
+  }
+}
+
+// Home navigatie
+function openRoom(n) {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("room" + n).style.display = "block";
+}
+
+function goHome() {
+  location.reload();
+}
+
+// Kladblok toggle functies
+function toggleNotepad() {
+  const notepad = document.getElementById("notepad");
+  notepad.style.display = notepad.style.display === "block" ? "none" : "block";
+}
+
+function closeNotepad() {
+  document.getElementById("notepad").style.display = "none";
+}
 </script>
 
 </body>
