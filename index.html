@@ -17,12 +17,12 @@ body {
     background: #1e293b;
     padding: 20px;
     margin: 20px auto;
-    max-width: 600px;
+    max-width: 650px;
     border-radius: 10px;
 }
 input {
     padding: 5px;
-    width: 80px;
+    width: 90px;
 }
 button {
     padding: 10px 20px;
@@ -41,7 +41,7 @@ button {
 <!-- HOME -->
 <div id="home">
 <h1>🔐 Wiskunde Escape Room – MAVO 2</h1>
-<p>Los alle escape rooms op en verzamel de cijfers!</p>
+<p>Los alle escape rooms op en verzamel de cijfers</p>
 
 <button onclick="openRoom(1)">Escape Room 1</button>
 <button onclick="openRoom(2)">Escape Room 2</button>
@@ -76,7 +76,7 @@ button {
 <!-- ESCAPE ROOM 2 -->
 <div class="room" id="room2">
 <h2>Escape Room 2 – Oppervlakte Parallellogram</h2>
-<p><b>Formule:</b> oppervlakte = basis × hoogte</p>
+<p><b>Formule:</b> basis × hoogte</p>
 
 <p>1) Basis 8 cm, hoogte 5 cm → <input id="r2q1"> cm²</p>
 <p>2) Basis 12 cm, hoogte 4 cm → <input id="r2q2"> cm²</p>
@@ -87,15 +87,16 @@ button {
 <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ESCAPE ROOM 3 -->
+<!-- ESCAPE ROOM 3 (SIMPEL) -->
 <div class="room" id="room3">
-<h2>Escape Room 3 – Oppervlakte Cirkel</h2>
-<p><b>Formule:</b> π × r² (gebruik π = 3,14)</p>
+<h2>Escape Room 3 – Oppervlakte Cirkel (simpel)</h2>
+<p><b>Stap 1:</b> straal = diameter ÷ 2</p>
+<p><b>Stap 2:</b> oppervlakte = 3,14 × r²</p>
 
-<p>1) Straal = 3 cm → <input id="r3q1"> cm²</p>
-<p>2) Straal = 5 cm → <input id="r3q2"> cm²</p>
-<p>3) Straal = 7 cm → <input id="r3q3"> cm²</p>
-<p>4) Straal = 10 cm → <input id="r3q4"> cm²</p>
+<p>1) Diameter = 40 m → <input id="r3q1"> m²</p>
+<p>2) Diameter = 20 m → <input id="r3q2"> m²</p>
+<p>3) Diameter = 10 m → <input id="r3q3"> m²</p>
+<p>4) Diameter = 14 m → <input id="r3q4"> m²</p>
 
 <button onclick="checkRoom3()">Check</button>
 <p id="r3result"></p>
@@ -103,10 +104,8 @@ button {
 </div>
 
 <script>
-// CODE (1 cijfer per escape room)
 let code = ["3", "6", "9"];
 
-// NAVIGATIE
 function openRoom(n) {
     document.getElementById("home").style.display = "none";
     document.getElementById("room" + n).style.display = "block";
@@ -138,12 +137,12 @@ function checkRoom2() {
         }
     }
     document.getElementById("r2result").innerHTML =
-    "✅ Escape Room voltooid! Jouw cijfer is <b>6</b>";
+    "✅ Goed gedaan! Jouw cijfer is <b>6</b>";
 }
 
-// ROOM 3
+// ROOM 3 (SIMPEL)
 function checkRoom3() {
-    let answers = [28.26,78.5,153.86,314];
+    let answers = [1256,314,78.5,153.86];
     for (let i=1;i<=4;i++){
         if (document.getElementById("r3q"+i).value != answers[i-1]){
             document.getElementById("r3result").innerText = "❌ Niet alles klopt";
@@ -151,7 +150,7 @@ function checkRoom3() {
         }
     }
     document.getElementById("r3result").innerHTML =
-    "✅ Goed gedaan! Jouw cijfer is <b>9</b>";
+    "✅ Escape Room voltooid! Jouw cijfer is <b>9</b>";
 }
 
 // EINDCODE
