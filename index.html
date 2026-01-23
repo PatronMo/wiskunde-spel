@@ -9,36 +9,33 @@
     color: #f1f1f1;
     text-align: center;
     padding: 20px;
-    /* Achtergrond instellen met jouw gekozen afbeelding */
-    background-image: url('https://wallpapers.com/images/featured-full/hell-u3m1j19m00av0kyt.jpg'); /* Jouw afbeelding */
+
+    /* JOUW gekozen achtergrond */
+    background-image: url('https://wallpapers.com/images/featured-full/hell-u3m1j19m00av0kyt.jpg');
     background-size: cover;
+    background-position: center;
     background-attachment: fixed;
   }
   h1, h3 {
     font-family: 'Impact', sans-serif;
-    color: #ff4747; /* Duivelsrood */
+    color: #ff4747;
+    text-shadow: 2px 2px 6px black;
   }
-  h1 {
-    font-size: 48px;
-    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
-  }
-  h3 {
-    font-size: 24px;
-    color: #fff;
-    margin-bottom: 30px;
-  }
+  h1 { font-size: 48px; }
+  h3 { font-size: 24px; margin-bottom: 20px; }
+
   .room {
     display: none;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     padding: 20px;
     margin: 20px auto;
     max-width: 700px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 2px solid #ff4747;
   }
   input {
-    padding: 5px;
-    width: 100px;
+    padding: 6px;
+    width: 90px;
     font-size: 16px;
     background: #2e1f30;
     color: #fff;
@@ -46,68 +43,52 @@
     border-radius: 5px;
   }
   button {
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 10px 22px;
+    margin: 8px;
     cursor: pointer;
     font-size: 16px;
     background: #ff4747;
     border: 1px solid #fff;
-    border-radius: 5px;
+    border-radius: 6px;
     color: white;
   }
   button:hover {
     background: #ff1e1e;
   }
   .success {
-    color: #22c55e;
-    font-size: 26px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  }
-  p {
-    font-size: 18px;
+    color: #22c55e; font-size: 28px; font-weight: bold;
+    text-shadow: 2px 2px 8px black;
   }
 
-  /* Kladblok stijlen */
+  /* Kladblok */
   #notepad {
     position: fixed;
-    left: 10px;
-    top: 20%;
-    width: 250px;
-    height: 350px;
-    background-color: #2b3947;
-    border: 2px solid #4b5563;
-    border-radius: 10px;
+    left: 10px; top: 10px;
+    width: 250px; height: 320px;
+    background: #111;
+    border: 2px solid #444;
     padding: 10px;
     display: none;
+    border-radius: 8px;
   }
-
   #notepad textarea {
-    width: 100%;
-    height: 80%;
-    background-color: #2b3947;
-    color: white;
-    border: none;
-    font-size: 16px;
-    resize: none;
+    width: 100%; height: 80%;
+    background: #222; color: #fff;
+    border: none; font-size: 16px;
   }
-
   #notepad button {
-    width: 100%;
-    background-color: #4b5563;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+    background: #444; color: #fff;
+    margin-top: 8px;
   }
 </style>
 </head>
 <body>
 
-<!-- Kladblok Knop en Notepad -->
-<button onclick="toggleNotepad()" style="position: fixed; left: 10px; top: 10px;">Kladblok</button>
+<!-- KLADLOK -->
+<button onclick="toggleNotepad()">📝 Kladblok</button>
 <div id="notepad">
-  <textarea id="notes" placeholder="Schrijf je berekeningen hier..."></textarea>
-  <button onclick="closeNotepad()">Sluit Kladblok</button>
+  <textarea id="notes" placeholder="Schrijf je sommen hier..."></textarea>
+  <button onclick="closeNotepad()">Sluit</button>
 </div>
 
 <!-- HOME -->
@@ -124,88 +105,170 @@
 
   <h3>🔢 Eindcode</h3>
   <input id="finalCode" maxlength="6" placeholder="code" />
-  <br />
+  <br>
   <button onclick="checkFinal()">Check code</button>
-
   <p id="victory"></p>
 </div>
 
-<!-- ESCAPE ROOM 1 -->
+<!-- ROOM 1 -->
 <div class="room" id="room1">
   <h2>Escape Room 1 – Lineaire Vergelijkingen</h2>
-  <p>1) 3x + 5 = 50 → x = <input id="r1q1" /></p>
-  <p>2) 2x + 4 = 20 → x = <input id="r1q2" /></p>
-  <p>3) x − 7 = 9 → x = <input id="r1q3" /></p>
-  <p>4) 5x = 30 → x = <input id="r1q4" /></p>
-  <p>5) x + 12 = 25 → x = <input id="r1q5" /></p>
-  <p>6) 4x − 8 = 12 → x = <input id="r1q6" /></p>
-  <p>7) 10x = 100 → x = <input id="r1q7" /></p>
-  <p>8) x ÷ 2 = 6 → x = <input id="r1q8" /></p>
+  <p>1) 3x + 5 = 50 → x = <input id="r1q1"></p>
+  <p>2) 2x + 4 = 20 → x = <input id="r1q2"></p>
+  <p>3) x − 7 = 9 → x = <input id="r1q3"></p>
+  <p>4) 5x = 30 → x = <input id="r1q4"></p>
+  <p>5) x + 12 = 25 → x = <input id="r1q5"></p>
+  <p>6) 4x − 8 = 12 → x = <input id="r1q6"></p>
+  <p>7) 10x = 100 → x = <input id="r1q7"></p>
+  <p>8) x ÷ 2 = 6 → x = <input id="r1q8"></p>
   <button onclick="checkRoom1()">Check</button>
   <p id="r1result"></p>
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ESCAPE ROOM 2 -->
+<!-- ROOM 2 -->
 <div class="room" id="room2">
   <h2>Escape Room 2 – Oppervlakte Parallellogram</h2>
-  <p><b>Formule:</b> oppervlakte = basis × hoogte</p>
-  <p>1) Basis 8 cm, hoogte 5 cm → <input id="r2q1" /> cm²</p>
-  <p>2) Basis 12 cm, hoogte 4 cm → <input id="r2q2" /> cm²</p>
-  <p>3) Basis 15 cm, hoogte 6 cm → <input id="r2q3" /> cm²</p>
+  <p>Oppervlakte = basis × hoogte</p>
+  <p>1) 8 × 5 → <input id="r2q1"> cm²</p>
+  <p>2) 12 × 4 → <input id="r2q2"> cm²</p>
+  <p>3) 15 × 6 → <input id="r2q3"> cm²</p>
   <button onclick="checkRoom2()">Check</button>
   <p id="r2result"></p>
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ESCAPE ROOM 3 -->
+<!-- ROOM 3 -->
 <div class="room" id="room3">
-  <h2>Escape Room 3 – Oppervlakte Cirkel (met straal invullen)</h2>
-  <p><b>Stap 1:</b> straal = diameter ÷ 2</p>
-  <p><b>Stap 2:</b> oppervlakte = 3,14 × r²</p>
-  <p>1) Diameter = 40 m → Straal: <input id="r3r1" size="3" /> m, Oppervlakte: <input id="r3q1" size="7" /> m²</p>
-  <p>2) Diameter = 20 m → Straal: <input id="r3r2" size="3" /> m, Oppervlakte: <input id="r3q2" size="7" /> m²</p>
-  <p>3) Diameter = 10 m → Straal: <input id="r3r3" size="3" /> m, Oppervlakte: <input id="r3q3" size="7" /> m²</p>
-  <p>4) Diameter = 14 m → Straal: <input id="r3r4" size="3" /> m, Oppervlakte: <input id="r3q4" size="7" /> m²</p>
+  <h2>Escape Room 3 – Oppervlakte Cirkel</h2>
+  <p>Straal = diameter ÷ 2, Oppervlakte = 3,14 × r²</p>
+  <p>1) D=40 → R: <input id="r3r1" size="3">, O: <input id="r3q1" size="7"></p>
+  <p>2) D=20 → R: <input id="r3r2" size="3">, O: <input id="r3q2" size="7"></p>
+  <p>3) D=10 → R: <input id="r3r3" size="3">, O: <input id="r3q3" size="7"></p>
+  <p>4) D=14 → R: <input id="r3r4" size="3">, O: <input id="r3q4" size="7"></p>
   <button onclick="checkRoom3()">Check</button>
   <p id="r3result"></p>
   <button onclick="goHome()">Terug</button>
 </div>
 
-<script>
-// Nieuwe eindcode
-const code = ["3", "6", "9", "8", "5", "7"];
+<!-- ROOM 4 -->
+<div class="room" id="room4">
+  <h2>Escape Room 4 – Kortingssommen</h2>
+  <p>1) €40 met 29% korting → <input id="r4q1"> €</p>
+  <p>2) €120 met 15% korting → <input id="r4q2"> €</p>
+  <p>3) €75 met 20% korting → <input id="r4q3"> €</p>
+  <p>4) €60 met 35% korting → <input id="r4q4"> €</p>
+  <button onclick="checkRoom4()">Check</button>
+  <p id="r4result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
 
-// Functie voor het openen van rooms
+<!-- ROOM 5 -->
+<div class="room" id="room5">
+  <h2>Escape Room 5 – Procentensommen</h2>
+  <p>1) 15% van 80 → <input id="r5q1"> €</p>
+  <p>2) 25% korting op €120 → <input id="r5q2"> €</p>
+  <p>3) 40% van 250 → <input id="r5q3"> €</p>
+  <button onclick="checkRoom5()">Check</button>
+  <p id="r5result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
+<!-- ROOM 6 -->
+<div class="room" id="room6">
+  <h2>Escape Room 6 – Tabel Lezen</h2>
+  <table style="margin: auto; border:1px solid white; margin-bottom: 15px;">
+    <tr><th>Maand</th><th>Aantal auto's</th></tr>
+    <tr><td>Januari</td><td>150</td></tr>
+    <tr><td>Februari</td><td>120</td></tr>
+    <tr><td>Maart</td><td>130</td></tr>
+    <tr><td>April</td><td>140</td></tr>
+  </table>
+  <p>1) Totaal jan–mrt → <input id="r6q1"></p>
+  <p>2) Gemiddelde per maand → <input id="r6q2"></p>
+  <button onclick="checkRoom6()">Check</button>
+  <p id="r6result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
+<script>
+// 6-cijferige code
+const code = ["3","6","9","8","5","7"];
+
 function openRoom(n) {
   document.getElementById("home").style.display = "none";
-  document.getElementById("room" + n).style.display = "block";
+  document.getElementById("room"+n).style.display = "block";
 }
 
 function goHome() {
   location.reload();
 }
 
-// Kladblok toggle functies
 function toggleNotepad() {
-  var notepad = document.getElementById("notepad");
-  notepad.style.display = (notepad.style.display === "none" || notepad.style.display === "") ? "block" : "none";
+  const notepad = document.getElementById("notepad");
+  notepad.style.display = notepad.style.display === "block" ? "none" : "block";
 }
 
 function closeNotepad() {
   document.getElementById("notepad").style.display = "none";
 }
 
-// Functie om de eindcode te controleren
-function checkFinal() {
-  const userCode = document.getElementById("finalCode").value;
-  if (userCode === code.join("")) {
-    document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
-  } else {
-    document.getElementById("victory").innerText = "❌ Foute code!";
+// Room checks
+function checkRoom1(){
+  const ans = [15,8,16,6,13,5,10,12];
+  for(let i=1;i<=8;i++){
+    if(document.getElementById("r1q"+i).value!=ans[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw";
   }
+  document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>";
+}
+
+function checkRoom2(){
+  const ans=[40,48,90];
+  for(let i=1;i<=3;i++){
+    if(document.getElementById("r2q"+i).value!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";
+}
+
+function checkRoom3(){
+  const rCorrect=[20,10,5,7], oCorrect=[1256,314,78.5,153.86];
+  for(let i=1;i<=4;i++){
+    const rIn= parseFloat(document.getElementById("r3r"+i).value);
+    const oIn= parseFloat(document.getElementById("r3q"+i).value);
+    if(rIn!==rCorrect[i-1]||Math.abs(oIn-oCorrect[i-1])>0.1) return document.getElementById("r3result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>";
+}
+
+function checkRoom4(){
+  const ans=[28.4,102,60,39];
+  for(let i=1;i<=4;i++){
+    if(Math.abs(parseFloat(document.getElementById("r4q"+i).value)-ans[i-1])>0.1) return document.getElementById("r4result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>8</b>";
+}
+
+function checkRoom5(){
+  const ans=[12,90,100];
+  for(let i=1;i<=3;i++){
+    if(parseFloat(document.getElementById("r5q"+i).value)!=ans[i-1]) return document.getElementById("r5result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>";
+}
+
+function checkRoom6(){
+  const total=400;
+  const avg=135;
+  if(parseFloat(document.getElementById("r6q1").value)!=total||parseFloat(document.getElementById("r6q2").value)!=avg)
+    return document.getElementById("r6result").innerText="❌ Probeer opnieuw";
+  document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>";
+}
+
+function checkFinal(){
+  const userCode=document.getElementById("finalCode").value;
+  if(userCode===code.join("")) document.getElementById("victory").innerHTML="<span class='success'>🏆 VICTORY! 🏆</span>";
+  else document.getElementById("victory").innerText="❌ Foute code!";
 }
 </script>
-
 </body>
 </html>
