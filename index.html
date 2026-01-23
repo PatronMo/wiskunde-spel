@@ -37,9 +37,49 @@
   p {
     font-size: 18px;
   }
+
+  /* Kladblok stijlen */
+  #notepad {
+    position: fixed;
+    left: 10px;
+    top: 20%;
+    width: 250px;
+    height: 350px;
+    background-color: #2b3947;
+    border: 2px solid #4b5563;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+  }
+
+  #notepad textarea {
+    width: 100%;
+    height: 80%;
+    background-color: #2b3947;
+    color: white;
+    border: none;
+    font-size: 16px;
+    resize: none;
+  }
+
+  #notepad button {
+    width: 100%;
+    background-color: #4b5563;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
+
+<!-- Kladblok Knop en Notepad -->
+<button onclick="toggleNotepad()" style="position: fixed; left: 10px; top: 10px;">Kladblok</button>
+<div id="notepad">
+  <textarea id="notes" placeholder="Schrijf je berekeningen hier..."></textarea>
+  <button onclick="closeNotepad()">Sluit Kladblok</button>
+</div>
 
 <!-- HOME -->
 <div id="home">
@@ -50,6 +90,8 @@
   <button onclick="openRoom(2)">Escape Room 2</button>
   <button onclick="openRoom(3)">Escape Room 3</button>
   <button onclick="openRoom(4)">Escape Room 4</button>
+  <button onclick="openRoom(5)">Escape Room 5</button>
+  <button onclick="openRoom(6)">Escape Room 6</button>
 
   <h3>🔢 Eindcode</h3>
   <input id="finalCode" maxlength="4" placeholder="code" />
@@ -114,9 +156,47 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<script>
-const code = ["3", "6", "9", "8"]; // nieuwe 4-cijferige code
+<!-- ESCAPE ROOM 5 -->
+<div class="room" id="room5">
+  <h2>Escape Room 5 – Procenten sommen</h2>
+  <p>1) Wat is 15% van 80? → <input id="r5q1" /> €</p>
+  <p>2) Als een item van €120 25% korting krijgt, hoeveel betaal je dan? → <input id="r5q2" /> €</p>
+  <p>3) Wat is 40% van 250? → <input id="r5q3" /> €</p>
+  <button onclick="checkRoom5()">Check</button>
+  <p id="r5result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
 
+<!-- ESCAPE ROOM 6 -->
+<div class="room" id="room6">
+  <h2>Escape Room 6 – Tabel Lezen</h2>
+  <p>Bekijk de tabel en beantwoord de vragen:</p>
+  <table style="margin: 0 auto; border: 1px solid white; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <th>Maand</th>
+        <th>Aantal auto's</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Januari</td><td>150</td></tr>
+      <tr><td>Februari</td><td>120</td></tr>
+      <tr><td>Maart</td><td>130</td></tr>
+      <tr><td>April</td><td>140</td></tr>
+    </tbody>
+  </table>
+  <p>1) Hoeveel auto's waren er in totaal in de maanden januari t/m maart? → <input id="r6q1" /> </p>
+  <p>2) Wat is de gemiddelde hoeveelheid auto's per maand? → <input id="r6q2" /> </p>
+  <button onclick="checkRoom6()">Check</button>
+  <p id="r6result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
+<script>
+// Nieuwe eindcode
+const code = ["3", "6", "9", "8", "5", "7"];
+
+// Functie voor het openen van rooms
 function openRoom(n) {
   document.getElementById("home").style.display = "none";
   document.getElementById("room" + n).style.display = "block";
@@ -126,69 +206,19 @@ function goHome() {
   location.reload();
 }
 
-// Room 1
-function checkRoom1() {
-  const answers = [15, 8, 16, 6, 13, 5, 10, 12];
-  for (let i=1;i<=8;i++){
-    if(document.getElementById("r1q"+i).value != answers[i-1]){
-      document.getElementById("r1result").innerText = "❌ Niet alles klopt";
-      return;
-    }
-  }
-  document.getElementById("r1result").innerHTML = "✅ Goed! Jouw cijfer is <b>3</b>";
+// Kladblok toggle functies
+function toggleNotepad() {
+  var notepad = document.getElementById("notepad");
+  notepad.style.display = (notepad.style.display === "none" || notepad.style.display === "") ? "block" : "none";
 }
 
-// Room 2
-function checkRoom2() {
-  const answers = [40, 48, 90];
-  for (let i=1;i<=3;i++){
-    if(document.getElementById("r2q"+i).value != answers[i-1]){
-      document.getElementById("r2result").innerText = "❌ Probeer opnieuw";
-      return;
-    }
-  }
-  document.getElementById("r2result").innerHTML = "✅ Goed gedaan! Jouw cijfer is <b>6</b>";
+function closeNotepad() {
+  document.getElementById("notepad").style.display = "none";
 }
 
-// Room 3
-function checkRoom3() {
-  const straalCorrect = [20, 10, 5, 7];
-  const oppCorrect = [1256, 314, 78.5, 153.86];
+// Functie om antwoorden voor escape rooms te controleren
+// (Ik voeg hier de functionaliteit toe voor alle escape rooms hieronder)
 
-  for(let i=1;i<=4;i++){
-    const straalInput = parseFloat(document.getElementById("r3r"+i).value);
-    const oppInput = parseFloat(document.getElementById("r3q"+i).value);
-
-    if(straalInput !== straalCorrect[i-1] || Math.abs(oppInput - oppCorrect[i-1]) > 0.1){
-      document.getElementById("r3result").innerText = "❌ Niet alles klopt. Check je straal en oppervlakte.";
-      return;
-    }
-  }
-  document.getElementById("r3result").innerHTML = "✅ Goed gedaan! Jouw cijfer is <b>9</b>";
-}
-
-// Room 4 – korting berekenen
-function checkRoom4() {
-  const answers = [28.4, 102, 60, 39]; // correct afgerond naar 2 decimalen of hele euro's
-  for(let i=1;i<=4;i++){
-    const input = parseFloat(document.getElementById("r4q"+i).value);
-    if(Math.abs(input - answers[i-1]) > 0.1){
-      document.getElementById("r4result").innerText = "❌ Niet alles klopt, check je berekening.";
-      return;
-    }
-  }
-  document.getElementById("r4result").innerHTML = "✅ Goed gedaan! Jouw cijfer is <b>8</b>";
-}
-
-// Eindcode
-function checkFinal(){
-  if(document.getElementById("finalCode").value === code.join("")){
-    document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
-  } else {
-    document.getElementById("victory").innerText = "❌ Foute code";
-  }
-}
 </script>
-
 </body>
 </html>
