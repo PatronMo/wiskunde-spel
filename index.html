@@ -85,8 +85,8 @@
     position: fixed;
     left: 10px;
     bottom: 60px;
-    width: 350px;
-    height: 400px;
+    width: 380px;
+    height: 420px;
     background: rgba(0,0,0,0.95);
     color: #f1f1f1;
     padding: 15px;
@@ -236,19 +236,28 @@
 <div id="story">
 <h2>Het Verhaal van de Pyramide van de Duivel</h2>
 <p>
-Lang geleden, diep in de duistere woestijn, stond een vergeten piramide die door niemand betreden durfde te worden. Men zei dat hij de ziel van elke onvoorzichtige avonturier gevangen hield in een labyrint van raadsels en wiskundige vallen. 
+Lang geleden, diep in de woestijn, stond een piramide die door niemand betreden durfde te worden. Men zei dat hij de ziel van elke onvoorzichtige avonturier gevangen hield in een labyrint van raadsels en wiskundige vallen.
 </p>
 <p>
-Jarenlang werd de piramide door verhalen omgeven: wie alle kamers oploste en de cijfers correct verzamelde, zou de legendarische Gouden Code ontdekken, een code die rijkdom, kennis én gevaarlijke krachten combineerde. 
+Jarenlang werd de piramide omgeven door geheimzinnige verhalen: wie alle kamers oploste en de cijfers correct verzamelde, zou de legendarische Gouden Code ontdekken – een code die rijkdom, kennis en gevaarlijke krachten combineerde.
 </p>
 <p>
-Jij bent nu die dappere avonturier. Iedere kamer die je betreedt test niet alleen je verstand, maar ook je doorzettingsvermogen. Van het Pad naar de Hel, vol met lineaire puzzels, tot de Kamer van de Duistere Breuken, en het Doolhof van Omrekeningen, elke uitdaging brengt je dichter bij de ultieme waarheid.
+Jij bent nu die dappere avonturier. Iedere kamer die je betreedt test niet alleen je verstand, maar ook je doorzettingsvermogen. Van het Pad naar de Hel, vol lineaire puzzels, tot de Kamer van de Duistere Breuken, en het Doolhof van Omrekeningen, elke uitdaging brengt je dichter bij de ultieme waarheid.
 </p>
 <p>
 De lucht wordt zwaarder, de muren lijken te ademen, en schaduwen fluisteren waarschuwingen. Alleen wie scherp van geest is, zal het laatste cijfer vinden en de Gouden Code ontgrendelen. Durf jij het avontuur te voltooien en de geheimen van de piramide te onthullen?
 </p>
 <p>
-De piramide wacht… en de tijd tikt…
+Terwijl je verder loopt, voel je een kilte over je rug. Fluisteringen van vroegere avonturiers zweven rond je hoofd: "Laat je niet misleiden door wat je ziet… elke fout kan fataal zijn."
+</p>
+<p>
+Je ziet vlammen dansen op de muren, die in ritme lijken te bewegen met je hartslag. Oude inscripties vertellen over verloren kennis en vergeten macht. Het pad wordt nauwer, je stappen echoën in de donkere gangen, en de tijd lijkt te vertragen.
+</p>
+<p>
+De piramide wacht op een ware meester, iemand die geduld, wijsheid en moed bezit. Alleen de slimste avonturiers zullen de kamers vol raadsels overleven en de Gouden Code ontdekken. De piramide is levend… en observeert elke beweging.
+</p>
+<p>
+De tijd tikt… en elke seconde brengt je dichter bij de ultieme test. Durf jij het laatste cijfer te vinden en de geheimen te ontsluiten?
 </p>
 </div>
 
@@ -257,88 +266,29 @@ De piramide wacht… en de tijd tikt…
 const code = ["3","6","9","8","5","7","1"];
 
 // Room checks
-function checkRoom1(){
-  const ans = [15,8,16,6,13,5,10,12];
-  for(let i=1;i<=8;i++){
-    if(document.getElementById("r1q"+i).value!=ans[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw";
-  }
-  document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>";
-}
-
-function checkRoom2(){
-  const ans=[1.25,1,1.5,2];
-  for(let i=1;i<=4;i++){
-    if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
-  }
-  document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";
-}
-
-function checkRoom3(){
-  const ans=[0.01,500,1,25000];
-  for(let i=1;i<=4;i++){
-    if(parseFloat(document.getElementById("r3q"+i).value)!=ans[i-1]) return document.getElementById("r3result").innerText="❌ Probeer opnieuw";
-  }
-  document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>";
-}
-
-function checkRoom4(){
-  const ans=[28.4,102,60,39];
-  for(let i=1;i<=4;i++){
-    if(Math.abs(parseFloat(document.getElementById("r4q"+i).value)-ans[i-1])>0.1) return document.getElementById("r4result").innerText="❌ Probeer opnieuw";
-  }
-  document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>8</b>";
-}
-
-function checkRoom5(){
-  const ans=[12,90,100];
-  for(let i=1;i<=3;i++){
-    if(parseFloat(document.getElementById("r5q"+i).value)!=ans[i-1]) return document.getElementById("r5result").innerText="❌ Probeer opnieuw";
-  }
-  document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>";
-}
-
-function checkRoom6(){
-  const total=400;
-  const avg=135;
-  if(parseFloat(document.getElementById("r6q1").value)!=total||parseFloat(document.getElementById("r6q2").value)!=avg)
-    return document.getElementById("r6result").innerText="❌ Probeer opnieuw";
-  document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>";
-}
-
-function checkRoom7() {
-  const ans = [9, 9, 15, 9, 9];
-  for (let i = 1; i <= 5; i++) {
-    if (parseFloat(document.getElementById("r7q" + i).value) !== ans[i - 1]) {
-      return document.getElementById("r7result").innerText = "❌ Probeer opnieuw";
-    }
-  }
-  document.getElementById("r7result").innerHTML = "✅ Jouw cijfer: <b>10</b>";
-}
+function checkRoom1(){ const ans=[15,8,16,6,13,5,10,12]; for(let i=1;i<=8;i++){ if(document.getElementById("r1q"+i).value!=ans[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw"; } document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>"; }
+function checkRoom2(){ const ans=[1.25,1,1.5,2]; for(let i=1;i<=4;i++){ if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw"; } document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>"; }
+function checkRoom3(){ const ans=[0.01,500,1,25000]; for(let i=1;i<=4;i++){ if(parseFloat(document.getElementById("r3q"+i).value)!=ans[i-1]) return document.getElementById("r3result").innerText="❌ Probeer opnieuw"; } document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>"; }
+function checkRoom4(){ const ans=[28.4,102,60,39]; for(let i=1;i<=4;i++){ if(Math.abs(parseFloat(document.getElementById("r4q"+i).value)-ans[i-1])>0.1) return document.getElementById("r4result").innerText="❌ Probeer opnieuw"; } document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>8</b>"; }
+function checkRoom5(){ const ans=[12,90,100]; for(let i=1;i<=3;i++){ if(parseFloat(document.getElementById("r5q"+i).value)!=ans[i-1]) return document.getElementById("r5result").innerText="❌ Probeer opnieuw"; } document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>"; }
+function checkRoom6(){ const total=400; const avg=135; if(parseFloat(document.getElementById("r6q1").value)!=total||parseFloat(document.getElementById("r6q2").value)!=avg) return document.getElementById("r6result").innerText="❌ Probeer opnieuw"; document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>"; }
+function checkRoom7(){ const ans=[9,9,15,9,9]; for(let i=1;i<=5;i++){ if(parseFloat(document.getElementById("r7q"+i).value)!=ans[i-1]) return document.getElementById("r7result").innerText="❌ Probeer opnieuw"; } document.getElementById("r7result").innerHTML="✅ Jouw cijfer: <b>10</b>"; }
 
 // Eindcode check
-function checkFinal() {
-  const userCode = document.getElementById("finalCode").value;
-  if (userCode === code.join("")) {
-    document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
-  } else {
-    document.getElementById("victory").innerText = "❌ Foute code!";
-  }
-}
+function checkFinal(){ const userCode=document.getElementById("finalCode").value; if(userCode===code.join("")){ document.getElementById("victory").innerHTML="<span class='success'>🏆 VICTORY! 🏆</span>"; } else { document.getElementById("victory").innerText="❌ Foute code!"; } }
 
-// Home navigatie
-function openRoom(n) {
-  document.getElementById("home").style.display = "none";
-  document.getElementById("room" + n).style.display = "block";
-}
-function goHome() { location.reload(); }
+// Navigatie
+function openRoom(n){ document.getElementById("home").style.display="none"; document.getElementById("room"+n).style.display="block"; }
+function goHome(){ location.reload(); }
 
-// Kladblok functies
-function toggleNotepad() {
-  const notepad = document.getElementById("notepad");
-  notepad.style.display = notepad.style.display === "block" ? "none" : "block";
-}
-function closeNotepad() { document.getElementById("notepad").style.display = "none"; }
+// Kladblok
+function toggleNotepad(){ const n=document.getElementById("notepad"); n.style.display=n.style.display==="block"?"none":"block"; }
+function closeNotepad(){ document.getElementById("notepad").style.display="none"; }
 
 // Verhaal toggle
-function toggleStory() {
-  const story = document
+function toggleStory(){ const s=document.getElementById("story"); s.style.display=s.style.display==="block"?"none":"block"; }
+</script>
+
+</body>
+</html>
+
