@@ -221,6 +221,18 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
+<!-- ROOM 3 -->
+<div class="room" id="room3">
+  <h2>Escape Room 3 – De Kamer van Omrekeningen en Duistere Krachten</h2>
+  <p>1) 100m = ?cm → x = <input id="r3q1"></p>
+  <p>2) 5L = ?ml → x = <input id="r3q2"></p>
+  <p>3) 12kg = ?g → x = <input id="r3q3"></p>
+  <p>4) 10km = ?m → x = <input id="r3q4"></p>
+  <button onclick="checkRoom3()">Check</button>
+  <p id="r3result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
 <script>
 // Introductie scherm starten
 function startGame() {
@@ -240,7 +252,13 @@ function toggleVerhaal() {
 
 // Functies voor het openen van kamers
 function openRoom(roomId) {
+  // Hide home and all rooms first
   document.getElementById("home").style.display = "none";
+  for (let i = 1; i <= 6; i++) {
+    document.getElementById("room" + i).style.display = "none";
+  }
+  
+  // Show selected room
   document.getElementById("room" + roomId).style.display = "block";
 }
 
@@ -263,6 +281,16 @@ function checkRoom2(){
     if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
   }
   document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";
+}
+
+function checkRoom3(){
+  const ans = [1000,5000,12000,10000];
+  for (let i = 1; i <= 4; i++) {
+    if (parseFloat(document.getElementById("r3q" + i).value) !== ans[i - 1]) {
+      return document.getElementById("r3result").innerText = "❌ Probeer opnieuw";
+    }
+  }
+  document.getElementById("r3result").innerHTML = "✅ Jouw cijfer: <b>4</b>";
 }
 
 // Kladblok functies
