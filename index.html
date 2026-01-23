@@ -9,8 +9,6 @@
     color: #f1f1f1;
     text-align: center;
     padding: 20px;
-
-    /* JOUW gekozen achtergrond */
     background-image: url('https://wallpapers.com/images/featured-full/hell-u3m1j19m00av0kyt.jpg');
     background-size: cover;
     background-position: center;
@@ -126,26 +124,25 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 2 -->
+<!-- ROOM 2 (Breuken) -->
 <div class="room" id="room2">
-  <h2>Escape Room 2 – Oppervlakte Parallellogram</h2>
-  <p>Oppervlakte = basis × hoogte</p>
-  <p>1) 8 × 5 → <input id="r2q1"> cm²</p>
-  <p>2) 12 × 4 → <input id="r2q2"> cm²</p>
-  <p>3) 15 × 6 → <input id="r2q3"> cm²</p>
+  <h2>Escape Room 2 – Breuken</h2>
+  <p>1) 1/2 + 3/4 = <input id="r2q1"></p>
+  <p>2) 3/5 − 1/5 = <input id="r2q2"></p>
+  <p>3) 2/3 × 3/4 = <input id="r2q3"></p>
+  <p>4) 5/6 ÷ 2/3 = <input id="r2q4"></p>
   <button onclick="checkRoom2()">Check</button>
   <p id="r2result"></p>
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 3 -->
+<!-- ROOM 3 (Omrekeningen) -->
 <div class="room" id="room3">
-  <h2>Escape Room 3 – Oppervlakte Cirkel</h2>
-  <p>Straal = diameter ÷ 2, Oppervlakte = 3,14 × r²</p>
-  <p>1) D=40 → R: <input id="r3r1" size="3">, O: <input id="r3q1" size="7"></p>
-  <p>2) D=20 → R: <input id="r3r2" size="3">, O: <input id="r3q2" size="7"></p>
-  <p>3) D=10 → R: <input id="r3r3" size="3">, O: <input id="r3q3" size="7"></p>
-  <p>4) D=14 → R: <input id="r3r4" size="3">, O: <input id="r3q4" size="7"></p>
+  <h2>Escape Room 3 – Omrekeningen</h2>
+  <p>1) Hoeveel liter is 10 milliliter? → <input id="r3q1"> L</p>
+  <p>2) Hoeveel centimeter is 5 meter? → <input id="r3q2"> cm</p>
+  <p>3) 1000 gram = <input id="r3q3"> kilogram</p>
+  <p>4) 25 kilometer = <input id="r3q4"> meter</p>
   <button onclick="checkRoom3()">Check</button>
   <p id="r3result"></p>
   <button onclick="goHome()">Terug</button>
@@ -204,6 +201,7 @@ function goHome() {
   location.reload();
 }
 
+// Kladblok toggle functies
 function toggleNotepad() {
   const notepad = document.getElementById("notepad");
   notepad.style.display = notepad.style.display === "block" ? "none" : "block";
@@ -223,19 +221,17 @@ function checkRoom1(){
 }
 
 function checkRoom2(){
-  const ans=[40,48,90];
-  for(let i=1;i<=3;i++){
-    if(document.getElementById("r2q"+i).value!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
+  const ans=[1.25,1,1.5,2];
+  for(let i=1;i<=4;i++){
+    if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
   }
   document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";
 }
 
 function checkRoom3(){
-  const rCorrect=[20,10,5,7], oCorrect=[1256,314,78.5,153.86];
+  const ans=[0.01,500,1,25000];
   for(let i=1;i<=4;i++){
-    const rIn= parseFloat(document.getElementById("r3r"+i).value);
-    const oIn= parseFloat(document.getElementById("r3q"+i).value);
-    if(rIn!==rCorrect[i-1]||Math.abs(oIn-oCorrect[i-1])>0.1) return document.getElementById("r3result").innerText="❌ Probeer opnieuw";
+    if(parseFloat(document.getElementById("r3q"+i).value)!=ans[i-1]) return document.getElementById("r3result").innerText="❌ Probeer opnieuw";
   }
   document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>";
 }
