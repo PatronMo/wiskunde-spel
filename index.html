@@ -2,37 +2,66 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8" />
-<title>Escape Room Wiskunde MAVO 2</title>
+<title>Pyramide van de Duivel🔥👹</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
+    font-family: 'Arial', sans-serif;
+    background: #3b0a45;
+    color: #f1f1f1;
     text-align: center;
     padding: 20px;
+    background-image: url('https://i.imgur.com/Lg6XtA5.jpg'); /* Vuurbasis */
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  h1, h3 {
+    font-family: 'Impact', sans-serif;
+    color: #ff4747; /* Duivelsrood */
+  }
+  h1 {
+    font-size: 48px;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+  }
+  h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 30px;
   }
   .room {
     display: none;
-    background: #1e293b;
+    background: rgba(0, 0, 0, 0.8);
     padding: 20px;
     margin: 20px auto;
     max-width: 700px;
     border-radius: 10px;
+    border: 2px solid #ff4747;
   }
   input {
     padding: 5px;
-    width: 80px;
+    width: 100px;
     font-size: 16px;
+    background: #2e1f30;
+    color: #fff;
+    border: 1px solid #ff4747;
+    border-radius: 5px;
   }
   button {
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
     font-size: 16px;
+    background: #ff4747;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: white;
+  }
+  button:hover {
+    background: #ff1e1e;
   }
   .success {
     color: #22c55e;
     font-size: 26px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   }
   p {
     font-size: 18px;
@@ -83,8 +112,8 @@
 
 <!-- HOME -->
 <div id="home">
-  <h1>🔐 Wiskunde Escape Room – MAVO 2</h1>
-  <p>Los alle escape rooms op en verzamel de cijfers</p>
+  <h1>Pyramide van de Duivel🔥👹</h1>
+  <p><b>Los alle escape rooms op en verzamel de cijfers om te ontsnappen!</b></p>
 
   <button onclick="openRoom(1)">Escape Room 1</button>
   <button onclick="openRoom(2)">Escape Room 2</button>
@@ -94,7 +123,7 @@
   <button onclick="openRoom(6)">Escape Room 6</button>
 
   <h3>🔢 Eindcode</h3>
-  <input id="finalCode" maxlength="4" placeholder="code" />
+  <input id="finalCode" maxlength="6" placeholder="code" />
   <br />
   <button onclick="checkFinal()">Check code</button>
 
@@ -220,5 +249,6 @@ function closeNotepad() {
 // (Ik voeg hier de functionaliteit toe voor alle escape rooms hieronder)
 
 </script>
+
 </body>
 </html>
