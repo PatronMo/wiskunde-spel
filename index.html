@@ -6,11 +6,11 @@
 <style>
   body {
     font-family: 'Arial', sans-serif;
-    background: #3b0a45;
     color: #f1f1f1;
     text-align: center;
     padding: 20px;
-    background-image: url('https://i.imgur.com/Lg6XtA5.jpg'); /* Vuurbasis */
+    background-color: #3b0a45;  /* Duivels paars als achtergrondkleur */
+    background-image: url('https://i.imgur.com/vj1bwEj.jpg'); /* Alternatieve vuurbasis afbeelding */
     background-size: cover;
     background-attachment: fixed;
   }
@@ -245,9 +245,15 @@ function closeNotepad() {
   document.getElementById("notepad").style.display = "none";
 }
 
-// Functie om antwoorden voor escape rooms te controleren
-// (Ik voeg hier de functionaliteit toe voor alle escape rooms hieronder)
-
+// Functie om de eindcode te controleren
+function checkFinal() {
+  const userCode = document.getElementById("finalCode").value;
+  if (userCode === code.join("")) {
+    document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
+  } else {
+    document.getElementById("victory").innerText = "❌ Foute code!";
+  }
+}
 </script>
 
 </body>
