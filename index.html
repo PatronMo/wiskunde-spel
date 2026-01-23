@@ -94,16 +94,16 @@
   <h1>Pyramide van de Duivel🔥👹</h1>
   <p><b>Los alle escape rooms op en verzamel de cijfers om te ontsnappen!</b></p>
 
-  <button onclick="openRoom(1)">Escape Room 1</button>
-  <button onclick="openRoom(2)">Escape Room 2</button>
-  <button onclick="openRoom(3)">Escape Room 3</button>
-  <button onclick="openRoom(4)">Escape Room 4</button>
-  <button onclick="openRoom(5)">Escape Room 5</button>
-  <button onclick="openRoom(6)">Escape Room 6</button>
+  <button onclick="openRoom(1)">Escape Room 1 – Het Pad naar de Hel</button>
+  <button onclick="openRoom(2)">Escape Room 2 – De Kamer van de Duistere Breuken</button>
+  <button onclick="openRoom(3)">Escape Room 3 – Het Doolhof van Omrekeningen</button>
+  <button onclick="openRoom(4)">Escape Room 4 – De Zaal der Kortingen</button>
+  <button onclick="openRoom(5)">Escape Room 5 – De Val van de Procenten</button>
+  <button onclick="openRoom(6)">Escape Room 6 – De Tafel van de Tijden</button>
   <button onclick="openRoom(7)">Escape Room 7 – De Gouden Code</button>
 
   <h3>🔢 Eindcode</h3>
-  <input id="finalCode" maxlength="6" placeholder="code" />
+  <input id="finalCode" maxlength="7" placeholder="code" />
   <br>
   <button onclick="checkFinal()">Check code</button>
   <p id="victory"></p>
@@ -111,7 +111,7 @@
 
 <!-- ROOM 1 -->
 <div class="room" id="room1">
-  <h2>Escape Room 1 – Lineaire Vergelijkingen</h2>
+  <h2>Escape Room 1 – Het Pad naar de Hel</h2>
   <p>1) 3x + 5 = 50 → x = <input id="r1q1"></p>
   <p>2) 2x + 4 = 20 → x = <input id="r1q2"></p>
   <p>3) x − 7 = 9 → x = <input id="r1q3"></p>
@@ -127,7 +127,7 @@
 
 <!-- ROOM 2 (Breuken) -->
 <div class="room" id="room2">
-  <h2>Escape Room 2 – Breuken</h2>
+  <h2>Escape Room 2 – De Kamer van de Duistere Breuken</h2>
   <p>1) 1/2 + 3/4 = <input id="r2q1"></p>
   <p>2) 3/5 − 1/5 = <input id="r2q2"></p>
   <p>3) 2/3 × 3/4 = <input id="r2q3"></p>
@@ -139,7 +139,7 @@
 
 <!-- ROOM 3 (Omrekeningen) -->
 <div class="room" id="room3">
-  <h2>Escape Room 3 – Omrekeningen</h2>
+  <h2>Escape Room 3 – Het Doolhof van Omrekeningen</h2>
   <p>1) Hoeveel liter is 10 milliliter? → <input id="r3q1"> L</p>
   <p>2) Hoeveel centimeter is 5 meter? → <input id="r3q2"> cm</p>
   <p>3) 1000 gram = <input id="r3q3"> kilogram</p>
@@ -151,7 +151,7 @@
 
 <!-- ROOM 4 -->
 <div class="room" id="room4">
-  <h2>Escape Room 4 – Kortingssommen</h2>
+  <h2>Escape Room 4 – De Zaal der Kortingen</h2>
   <p>1) €40 met 29% korting → <input id="r4q1"> €</p>
   <p>2) €120 met 15% korting → <input id="r4q2"> €</p>
   <p>3) €75 met 20% korting → <input id="r4q3"> €</p>
@@ -163,7 +163,7 @@
 
 <!-- ROOM 5 -->
 <div class="room" id="room5">
-  <h2>Escape Room 5 – Procentensommen</h2>
+  <h2>Escape Room 5 – De Val van de Procenten</h2>
   <p>1) 15% van 80 → <input id="r5q1"> €</p>
   <p>2) 25% korting op €120 → <input id="r5q2"> €</p>
   <p>3) 40% van 250 → <input id="r5q3"> €</p>
@@ -174,7 +174,7 @@
 
 <!-- ROOM 6 -->
 <div class="room" id="room6">
-  <h2>Escape Room 6 – Tabel Lezen</h2>
+  <h2>Escape Room 6 – De Tafel van de Tijden</h2>
   <table style="margin: auto; border:1px solid white; margin-bottom: 15px;">
     <tr><th>Maand</th><th>Aantal auto's</th></tr>
     <tr><td>Januari</td><td>150</td></tr>
@@ -214,6 +214,9 @@
 </div>
 
 <script>
+// 7-cijferige code
+const code = ["3","6","9","8","5","7","1"];
+
 // Room checks (rest blijft hetzelfde)
 function checkRoom1(){
   const ans = [15,8,16,6,13,5,10,12];
@@ -274,7 +277,6 @@ function checkRoom7() {
 }
 
 // Eindcode check
-const code = ["3", "6", "9", "8", "5", "7"];
 function checkFinal() {
   const userCode = document.getElementById("finalCode").value;
   if (userCode === code.join("")) {
