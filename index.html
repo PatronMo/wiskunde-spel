@@ -1,166 +1,169 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Escape Room Wiskunde MAVO 2</title>
-
 <style>
-body {
+  body {
     font-family: Arial, sans-serif;
     background: #0f172a;
     color: white;
     text-align: center;
     padding: 20px;
-}
-.room {
+  }
+  .room {
     display: none;
     background: #1e293b;
     padding: 20px;
     margin: 20px auto;
     max-width: 650px;
     border-radius: 10px;
-}
-input {
+  }
+  input {
     padding: 5px;
-    width: 90px;
-}
-button {
+    width: 80px;
+    font-size: 16px;
+  }
+  button {
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
-}
-.success {
+    font-size: 16px;
+  }
+  .success {
     color: #22c55e;
     font-size: 26px;
-}
+  }
+  p {
+    font-size: 18px;
+  }
 </style>
 </head>
-
 <body>
 
 <!-- HOME -->
 <div id="home">
-<h1>🔐 Wiskunde Escape Room – MAVO 2</h1>
-<p>Los alle escape rooms op en verzamel de cijfers</p>
+  <h1>🔐 Wiskunde Escape Room – MAVO 2</h1>
+  <p>Los alle escape rooms op en verzamel de cijfers</p>
 
-<button onclick="openRoom(1)">Escape Room 1</button>
-<button onclick="openRoom(2)">Escape Room 2</button>
-<button onclick="openRoom(3)">Escape Room 3</button>
+  <button onclick="openRoom(1)">Escape Room 1</button>
+  <button onclick="openRoom(2)">Escape Room 2</button>
+  <button onclick="openRoom(3)">Escape Room 3</button>
 
-<h3>🔢 Eindcode</h3>
-<input id="finalCode" maxlength="3" placeholder="code">
-<br>
-<button onclick="checkFinal()">Check code</button>
+  <h3>🔢 Eindcode</h3>
+  <input id="finalCode" maxlength="3" placeholder="code" />
+  <br />
+  <button onclick="checkFinal()">Check code</button>
 
-<p id="victory"></p>
+  <p id="victory"></p>
 </div>
 
 <!-- ESCAPE ROOM 1 -->
 <div class="room" id="room1">
-<h2>Escape Room 1 – Vergelijkingen</h2>
-
-<p>1) 3x + 5 = 50 → x = <input id="r1q1"></p>
-<p>2) 2x + 4 = 20 → x = <input id="r1q2"></p>
-<p>3) x − 7 = 9 → x = <input id="r1q3"></p>
-<p>4) 5x = 30 → x = <input id="r1q4"></p>
-<p>5) x + 12 = 25 → x = <input id="r1q5"></p>
-<p>6) 4x − 8 = 12 → x = <input id="r1q6"></p>
-<p>7) 10x = 100 → x = <input id="r1q7"></p>
-<p>8) x ÷ 2 = 6 → x = <input id="r1q8"></p>
-
-<button onclick="checkRoom1()">Check</button>
-<p id="r1result"></p>
-<button onclick="goHome()">Terug</button>
+  <h2>Escape Room 1 – Lineaire Vergelijkingen</h2>
+  <p>1) 3x + 5 = 50 → x = <input id="r1q1" /></p>
+  <p>2) 2x + 4 = 20 → x = <input id="r1q2" /></p>
+  <p>3) x − 7 = 9 → x = <input id="r1q3" /></p>
+  <p>4) 5x = 30 → x = <input id="r1q4" /></p>
+  <p>5) x + 12 = 25 → x = <input id="r1q5" /></p>
+  <p>6) 4x − 8 = 12 → x = <input id="r1q6" /></p>
+  <p>7) 10x = 100 → x = <input id="r1q7" /></p>
+  <p>8) x ÷ 2 = 6 → x = <input id="r1q8" /></p>
+  <button onclick="checkRoom1()">Check</button>
+  <p id="r1result"></p>
+  <button onclick="goHome()">Terug</button>
 </div>
 
 <!-- ESCAPE ROOM 2 -->
 <div class="room" id="room2">
-<h2>Escape Room 2 – Oppervlakte Parallellogram</h2>
-<p><b>Formule:</b> basis × hoogte</p>
-
-<p>1) Basis 8 cm, hoogte 5 cm → <input id="r2q1"> cm²</p>
-<p>2) Basis 12 cm, hoogte 4 cm → <input id="r2q2"> cm²</p>
-<p>3) Basis 15 cm, hoogte 6 cm → <input id="r2q3"> cm²</p>
-
-<button onclick="checkRoom2()">Check</button>
-<p id="r2result"></p>
-<button onclick="goHome()">Terug</button>
+  <h2>Escape Room 2 – Oppervlakte Parallellogram</h2>
+  <p><b>Formule:</b> oppervlakte = basis × hoogte</p>
+  <p>1) Basis 8 cm, hoogte 5 cm → <input id="r2q1" /> cm²</p>
+  <p>2) Basis 12 cm, hoogte 4 cm → <input id="r2q2" /> cm²</p>
+  <p>3) Basis 15 cm, hoogte 6 cm → <input id="r2q3" /> cm²</p>
+  <button onclick="checkRoom2()">Check</button>
+  <p id="r2result"></p>
+  <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ESCAPE ROOM 3 (SIMPEL) -->
+<!-- ESCAPE ROOM 3 -->
 <div class="room" id="room3">
-<h2>Escape Room 3 – Oppervlakte Cirkel (simpel)</h2>
-<p><b>Stap 1:</b> straal = diameter ÷ 2</p>
-<p><b>Stap 2:</b> oppervlakte = 3,14 × r²</p>
-
-<p>1) Diameter = 40 m → <input id="r3q1"> m²</p>
-<p>2) Diameter = 20 m → <input id="r3q2"> m²</p>
-<p>3) Diameter = 10 m → <input id="r3q3"> m²</p>
-<p>4) Diameter = 14 m → <input id="r3q4"> m²</p>
-
-<button onclick="checkRoom3()">Check</button>
-<p id="r3result"></p>
-<button onclick="goHome()">Terug</button>
+  <h2>Escape Room 3 – Oppervlakte Cirkel (met straal invullen)</h2>
+  <p><b>Stap 1:</b> straal = diameter ÷ 2</p>
+  <p><b>Stap 2:</b> oppervlakte = 3,14 × r²</p>
+  <p>1) Diameter = 40 m → Straal: <input id="r3r1" size="3" /> m, Oppervlakte: <input id="r3q1" size="7" /> m²</p>
+  <p>2) Diameter = 20 m → Straal: <input id="r3r2" size="3" /> m, Oppervlakte: <input id="r3q2" size="7" /> m²</p>
+  <p>3) Diameter = 10 m → Straal: <input id="r3r3" size="3" /> m, Oppervlakte: <input id="r3q3" size="7" /> m²</p>
+  <p>4) Diameter = 14 m → Straal: <input id="r3r4" size="3" /> m, Oppervlakte: <input id="r3q4" size="7" /> m²</p>
+  <button onclick="checkRoom3()">Check</button>
+  <p id="r3result"></p>
+  <button onclick="goHome()">Terug</button>
 </div>
 
 <script>
-let code = ["3", "6", "9"];
+const code = ["3", "6", "9"];
 
 function openRoom(n) {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("room" + n).style.display = "block";
-}
-function goHome() {
-    location.reload();
+  document.getElementById("home").style.display = "none";
+  document.getElementById("room" + n).style.display = "block";
 }
 
-// ROOM 1
+function goHome() {
+  location.reload();
+}
+
 function checkRoom1() {
-    let answers = [15,8,16,6,13,5,10,12];
-    for (let i=1;i<=8;i++){
-        if (document.getElementById("r1q"+i).value != answers[i-1]){
-            document.getElementById("r1result").innerText = "❌ Niet alles klopt";
-            return;
-        }
+  const answers = [15, 8, 16, 6, 13, 5, 10, 12];
+  for (let i = 1; i <= 8; i++) {
+    if (document.getElementById("r1q" + i).value != answers[i - 1]) {
+      document.getElementById("r1result").innerText = "❌ Niet alles klopt";
+      return;
     }
-    document.getElementById("r1result").innerHTML =
+  }
+  document.getElementById("r1result").innerHTML =
     "✅ Goed! Jouw cijfer is <b>3</b>";
 }
 
-// ROOM 2
 function checkRoom2() {
-    let answers = [40,48,90];
-    for (let i=1;i<=3;i++){
-        if (document.getElementById("r2q"+i).value != answers[i-1]){
-            document.getElementById("r2result").innerText = "❌ Probeer opnieuw";
-            return;
-        }
+  const answers = [40, 48, 90];
+  for (let i = 1; i <= 3; i++) {
+    if (document.getElementById("r2q" + i).value != answers[i - 1]) {
+      document.getElementById("r2result").innerText = "❌ Probeer opnieuw";
+      return;
     }
-    document.getElementById("r2result").innerHTML =
+  }
+  document.getElementById("r2result").innerHTML =
     "✅ Goed gedaan! Jouw cijfer is <b>6</b>";
 }
 
-// ROOM 3 (SIMPEL)
 function checkRoom3() {
-    let answers = [1256,314,78.5,153.86];
-    for (let i=1;i<=4;i++){
-        if (document.getElementById("r3q"+i).value != answers[i-1]){
-            document.getElementById("r3result").innerText = "❌ Niet alles klopt";
-            return;
-        }
+  const straalCorrect = [20, 10, 5, 7];
+  const oppCorrect = [1256, 314, 78.5, 153.86];
+
+  for (let i = 1; i <= 4; i++) {
+    const straalInput = parseFloat(document.getElementById("r3r" + i).value);
+    const oppInput = parseFloat(document.getElementById("r3q" + i).value);
+
+    if (
+      straalInput !== straalCorrect[i - 1] ||
+      Math.abs(oppInput - oppCorrect[i - 1]) > 0.1
+    ) {
+      document.getElementById("r3result").innerText =
+        "❌ Niet alles klopt. Check je straal en oppervlakte.";
+      return;
     }
-    document.getElementById("r3result").innerHTML =
-    "✅ Escape Room voltooid! Jouw cijfer is <b>9</b>";
+  }
+  document.getElementById("r3result").innerHTML =
+    "✅ Goed gedaan! Jouw cijfer is <b>9</b>";
 }
 
-// EINDCODE
 function checkFinal() {
-    if (document.getElementById("finalCode").value === code.join("")) {
-        document.getElementById("victory").innerHTML =
-        "<span class='success'>🏆 VICTORY! 🏆</span>";
-    } else {
-        document.getElementById("victory").innerText = "❌ Foute code";
-    }
+  if (document.getElementById("finalCode").value === code.join("")) {
+    document.getElementById("victory").innerHTML =
+      "<span class='success'>🏆 VICTORY! 🏆</span>";
+  } else {
+    document.getElementById("victory").innerText = "❌ Foute code";
+  }
 }
 </script>
 
