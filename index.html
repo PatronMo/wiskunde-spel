@@ -58,33 +58,6 @@
     text-shadow: 2px 2px 8px black;
   }
 
-  /* Verhaal sectie */
-  #story {
-    position: fixed;
-    left: 10px; bottom: 10px;
-    width: 300px; height: 300px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #444;
-    padding: 10px;
-    display: none;
-    border-radius: 8px;
-    overflow-y: scroll;
-  }
-  #story h2 {
-    font-size: 18px;
-    color: #ff4747;
-    margin-top: 0;
-  }
-  #story p {
-    font-size: 16px;
-    color: #f1f1f1;
-    margin-bottom: 10px;
-  }
-  #story button {
-    background: #444; color: #fff;
-    margin-top: 8px;
-  }
-
   /* Kladblok */
   #notepad {
     position: fixed;
@@ -105,27 +78,9 @@
     background: #444; color: #fff;
     margin-top: 8px;
   }
-
 </style>
 </head>
 <body>
-
-<!-- VERHAAL -->
-<button onclick="toggleStory()">📖 Verhaal</button>
-<div id="story">
-  <h2>Het Verhaal van de Pyramide van de Duivel</h2>
-  <p>Je bent als groep van avonturiers en studenten in een mysterieus en verlaten land aangekomen. Het is een plek waar het duistere verleden de lucht lijkt te bedekken. Van de lokale bevolking wordt verteld dat deze streek wordt beheerst door een eeuwenoude kracht, de Duivel, die zijn macht verbergt in een verloren pyramide. Iedereen die ooit de piramide binnenging, is nooit meer teruggekeerd.</p>
-  <p><b>De missie:</b></p>
-  <p>Op een dag ontdek je een oude kaart die naar de pyramide leidt. Volgens de legende bevat de piramide een verborgen kracht die alle kennis van de wereld kan bevatten. Het lijkt het ideale moment voor een groep avonturiers zoals jij om de piramide te verkennen. Maar iets klopt niet. De kaarten zijn verwrongen, de markeringen lijken te veranderen en de mensen die er eerder probeerden te ontsnappen, zijn verdwenen. Wat ligt er werkelijk verborgen in de pyramide?</p>
-  <p>Als je eenmaal de ingang bereikt, voel je dat er iets kwaadaardigs aanwezig is. De lucht is dik van onheil, de gangen schreeuwen om hulp en je voelt de goden van het oude kwaad je volgen. Wat je niet wist, is dat je niet zomaar een gewone exploratie maakt, maar dat de piramide de ziel van degenen die het betreden probeert te vangen. De duivelse kracht is nog altijd actief, en het lijkt wel alsof de tijd zelf wordt vertraagd.</p>
-  <p><b>Het doel:</b></p>
-  <p>Je hebt maar één kans om de piramide te ontsnappen en de kracht van de Duivel te overwinnen. Maar er is een probleem: de piramide is gevuld met valstrikken, raadsels en dodevallen die je geest en wil uitdagen. De Duivel houdt je vast en speelt met je gedachten. Maar jij hebt iets dat de Duivel niet had voorzien – je slimme geest.</p>
-  <p>Je moet raadsels oplossen, wiskundige formules gebruiken en je moed tonen om jezelf en je team te bevrijden. Als je faalt, is er geen weg terug. En als de tijd opraakt, zal de kracht van de Duivel je voor altijd gevangen houden in zijn duistere wereld.</p>
-  <p><b>Het einde (Victory):</b></p>
-  <p>Je hebt de raadsels opgelost, de laatste deur is geopend en je denkt dat je gered bent. Maar er is nog één ding dat je moet doen. Vul de code in die je door de kamers hebt verzameld om de ultieme deur te ontsluiten. Deze deur zal je definitief bevrijden, en de piramide zal zijn macht verliezen. De Duivel zal niet langer regeren.</p>
-  <p>Het verhaal wordt afgesloten met de laatste overwinning – je hebt niet alleen de duivelse piramide overwonnen, maar ook de kracht van de kennis en samenwerking.</p>
-  <button onclick="closeStory()">Sluit Verhaal</button>
-</div>
 
 <!-- KLADLOK -->
 <button onclick="toggleNotepad()">📝 Kladblok</button>
@@ -145,6 +100,7 @@
   <button onclick="openRoom(4)">Escape Room 4</button>
   <button onclick="openRoom(5)">Escape Room 5</button>
   <button onclick="openRoom(6)">Escape Room 6</button>
+  <button onclick="openRoom(7)">Escape Room 7 – De Gouden Code</button>
 
   <h3>🔢 Eindcode</h3>
   <input id="finalCode" maxlength="6" placeholder="code" />
@@ -169,7 +125,7 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 2 -->
+<!-- ROOM 2 (Breuken) -->
 <div class="room" id="room2">
   <h2>Escape Room 2 – Breuken</h2>
   <p>1) 1/2 + 3/4 = <input id="r2q1"></p>
@@ -181,7 +137,7 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 3 -->
+<!-- ROOM 3 (Omrekeningen) -->
 <div class="room" id="room3">
   <h2>Escape Room 3 – Omrekeningen</h2>
   <p>1) Hoeveel liter is 10 milliliter? → <input id="r3q1"> L</p>
@@ -233,24 +189,105 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
+<!-- ROOM 7: De Gouden Code -->
+<div class="room" id="room7">
+  <h2>Escape Room 7 – De Gouden Code</h2>
+
+  <p>1) Wat is de uitkomst van 3²?</p>
+  <input id="r7q1">
+
+  <p>2) Wat is √81?</p>
+  <input id="r7q2">
+
+  <p>3) Wat is de uitkomst van: 5 × (6 − 3)?</p>
+  <input id="r7q3">
+
+  <p>4) Als 2 kopjes suiker gelijk zijn aan 3 kopjes meel, hoeveel kopjes meel heb je dan nodig voor 6 kopjes suiker?</p>
+  <input id="r7q4">
+
+  <p>5) Als 3 appels gelijk zijn aan 4 sinaasappels, hoeveel appels heb je dan nodig voor 12 sinaasappels?</p>
+  <input id="r7q5">
+
+  <button onclick="checkRoom7()">Check</button>
+  <p id="r7result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
 <script>
-// 6-cijferige code
-const code = ["3","6","9","8","5","7"];
-
-// Verhaal functionaliteit
-function toggleStory() {
-  const story = document.getElementById("story");
-  story.style.display = story.style.display === "block" ? "none" : "block";
+// Room checks (rest blijft hetzelfde)
+function checkRoom1(){
+  const ans = [15,8,16,6,13,5,10,12];
+  for(let i=1;i<=8;i++){
+    if(document.getElementById("r1q"+i).value!=ans[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>";
 }
 
-function closeStory() {
-  document.getElementById("story").style.display = "none";
+function checkRoom2(){
+  const ans=[1.25,1,1.5,2];
+  for(let i=1;i<=4;i++){
+    if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>";
 }
 
-// Room functies
+function checkRoom3(){
+  const ans=[0.01,500,1,25000];
+  for(let i=1;i<=4;i++){
+    if(parseFloat(document.getElementById("r3q"+i).value)!=ans[i-1]) return document.getElementById("r3result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>";
+}
+
+function checkRoom4(){
+  const ans=[28.4,102,60,39];
+  for(let i=1;i<=4;i++){
+    if(Math.abs(parseFloat(document.getElementById("r4q"+i).value)-ans[i-1])>0.1) return document.getElementById("r4result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>8</b>";
+}
+
+function checkRoom5(){
+  const ans=[12,90,100];
+  for(let i=1;i<=3;i++){
+    if(parseFloat(document.getElementById("r5q"+i).value)!=ans[i-1]) return document.getElementById("r5result").innerText="❌ Probeer opnieuw";
+  }
+  document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>";
+}
+
+function checkRoom6(){
+  const total=400;
+  const avg=135;
+  if(parseFloat(document.getElementById("r6q1").value)!=total||parseFloat(document.getElementById("r6q2").value)!=avg)
+    return document.getElementById("r6result").innerText="❌ Probeer opnieuw";
+  document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>";
+}
+
+function checkRoom7() {
+  const ans = [9, 9, 15, 9, 9];
+  for (let i = 1; i <= 5; i++) {
+    if (parseFloat(document.getElementById("r7q" + i).value) !== ans[i - 1]) {
+      return document.getElementById("r7result").innerText = "❌ Probeer opnieuw";
+    }
+  }
+  document.getElementById("r7result").innerHTML = "✅ Jouw cijfer: <b>10</b>";
+}
+
+// Eindcode check
+const code = ["3", "6", "9", "8", "5", "7"];
+function checkFinal() {
+  const userCode = document.getElementById("finalCode").value;
+  if (userCode === code.join("")) {
+    document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
+  } else {
+    document.getElementById("victory").innerText = "❌ Foute code!";
+  }
+}
+
+// Home navigatie
 function openRoom(n) {
   document.getElementById("home").style.display = "none";
-  document.getElementById("room"+n).style.display = "block";
+  document.getElementById("room" + n).style.display = "block";
 }
 
 function goHome() {
@@ -265,21 +302,6 @@ function toggleNotepad() {
 
 function closeNotepad() {
   document.getElementById("notepad").style.display = "none";
-}
-
-// Room checks
-function checkRoom1(){
-  const ans = [15,8,16,6,13,5,10,12];
-  for(let i=1;i<=8;i++){
-    if(document.getElementById("r1q"+i).value!=ans[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw";
-  }
-  document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>";
-}
-
-function checkFinal(){
-  const userCode=document.getElementById("finalCode").value;
-  if(userCode===code.join("")) document.getElementById("victory").innerHTML="<span class='success'>🏆 VICTORY! 🏆</span>";
-  else document.getElementById("victory").innerText="❌ Foute code!";
 }
 </script>
 
