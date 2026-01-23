@@ -2,7 +2,8 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Wiskunde Escape Room - MAVO 2</title>
+<title>Escape Room Wiskunde MAVO 2</title>
+
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -21,158 +22,145 @@ body {
 }
 input {
     padding: 5px;
-    width: 60px;
+    width: 80px;
 }
 button {
     padding: 10px 20px;
-    margin-top: 10px;
+    margin: 10px;
     cursor: pointer;
-}
-#home {
-    display: block;
 }
 .success {
     color: #22c55e;
-    font-size: 24px;
+    font-size: 26px;
 }
 </style>
 </head>
+
 <body>
 
+<!-- HOME -->
 <div id="home">
-    <h1>🔐 Wiskunde Escape Room (MAVO 2)</h1>
-    <p>Los alle escape rooms op en verzamel de 4 cijfers!</p>
+<h1>🔐 Wiskunde Escape Room – MAVO 2</h1>
+<p>Los alle escape rooms op en verzamel de cijfers!</p>
 
-    <button onclick="openRoom(1)">Escape Room 1</button>
-    <button onclick="openRoom(2)">Escape Room 2</button>
-    <button onclick="openRoom(3)">Escape Room 3</button>
-    <button onclick="openRoom(4)">Escape Room 4</button>
+<button onclick="openRoom(1)">Escape Room 1</button>
+<button onclick="openRoom(2)">Escape Room 2</button>
+<button onclick="openRoom(3)">Escape Room 3</button>
 
-    <h3>🔢 Eindcode</h3>
-    <input id="finalCode" maxlength="4">
-    <button onclick="checkFinal()">Check code</button>
+<h3>🔢 Eindcode</h3>
+<input id="finalCode" maxlength="3" placeholder="code">
+<br>
+<button onclick="checkFinal()">Check code</button>
 
-    <p id="victory"></p>
+<p id="victory"></p>
 </div>
 
-<!-- ROOM 1 -->
+<!-- ESCAPE ROOM 1 -->
 <div class="room" id="room1">
-<h2>Escape Room 1</h2>
-<p>Los alle vergelijkingen op</p>
+<h2>Escape Room 1 – Vergelijkingen</h2>
 
 <p>1) 3x + 5 = 50 → x = <input id="r1q1"></p>
 <p>2) 2x + 4 = 20 → x = <input id="r1q2"></p>
-<p>3) x - 7 = 9 → x = <input id="r1q3"></p>
+<p>3) x − 7 = 9 → x = <input id="r1q3"></p>
 <p>4) 5x = 30 → x = <input id="r1q4"></p>
 <p>5) x + 12 = 25 → x = <input id="r1q5"></p>
-<p>6) 4x - 8 = 12 → x = <input id="r1q6"></p>
+<p>6) 4x − 8 = 12 → x = <input id="r1q6"></p>
 <p>7) 10x = 100 → x = <input id="r1q7"></p>
-<p>8) x / 2 = 6 → x = <input id="r1q8"></p>
+<p>8) x ÷ 2 = 6 → x = <input id="r1q8"></p>
 
 <button onclick="checkRoom1()">Check</button>
 <p id="r1result"></p>
 <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 2 -->
+<!-- ESCAPE ROOM 2 -->
 <div class="room" id="room2">
-<h2>Escape Room 2</h2>
+<h2>Escape Room 2 – Oppervlakte Parallellogram</h2>
+<p><b>Formule:</b> oppervlakte = basis × hoogte</p>
 
-<p>1) 4x + 6 = 22 → <input id="r2q1"></p>
-<p>2) 6x = 36 → <input id="r2q2"></p>
-<p>3) x - 5 = 11 → <input id="r2q3"></p>
-<p>4) 2x + 10 = 30 → <input id="r2q4"></p>
-<p>5) 7x = 49 → <input id="r2q5"></p>
-<p>6) x + 8 = 14 → <input id="r2q6"></p>
-<p>7) 9x = 81 → <input id="r2q7"></p>
-<p>8) 5x - 5 = 20 → <input id="r2q8"></p>
+<p>1) Basis 8 cm, hoogte 5 cm → <input id="r2q1"> cm²</p>
+<p>2) Basis 12 cm, hoogte 4 cm → <input id="r2q2"> cm²</p>
+<p>3) Basis 15 cm, hoogte 6 cm → <input id="r2q3"> cm²</p>
 
 <button onclick="checkRoom2()">Check</button>
 <p id="r2result"></p>
 <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 3 -->
+<!-- ESCAPE ROOM 3 -->
 <div class="room" id="room3">
-<h2>Escape Room 3</h2>
+<h2>Escape Room 3 – Oppervlakte Cirkel</h2>
+<p><b>Formule:</b> π × r² (gebruik π = 3,14)</p>
 
-<p>1) 2x + 2 = 10 → <input id="r3q1"></p>
-<p>2) 8x = 64 → <input id="r3q2"></p>
-<p>3) x - 3 = 7 → <input id="r3q3"></p>
-<p>4) 4x + 4 = 20 → <input id="r3q4"></p>
-<p>5) x + 15 = 20 → <input id="r3q5"></p>
-<p>6) 3x = 9 → <input id="r3q6"></p>
-<p>7) 6x - 6 = 18 → <input id="r3q7"></p>
-<p>8) x / 5 = 2 → <input id="r3q8"></p>
+<p>1) Straal = 3 cm → <input id="r3q1"> cm²</p>
+<p>2) Straal = 5 cm → <input id="r3q2"> cm²</p>
+<p>3) Straal = 7 cm → <input id="r3q3"> cm²</p>
+<p>4) Straal = 10 cm → <input id="r3q4"> cm²</p>
 
 <button onclick="checkRoom3()">Check</button>
 <p id="r3result"></p>
 <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- ROOM 4 -->
-<div class="room" id="room4">
-<h2>Escape Room 4</h2>
-
-<p>1) 5x + 5 = 30 → <input id="r4q1"></p>
-<p>2) 7x = 56 → <input id="r4q2"></p>
-<p>3) x - 9 = 1 → <input id="r4q3"></p>
-<p>4) 2x + 6 = 18 → <input id="r4q4"></p>
-<p>5) 10x = 70 → <input id="r4q5"></p>
-<p>6) x + 4 = 10 → <input id="r4q6"></p>
-<p>7) 8x = 24 → <input id="r4q7"></p>
-<p>8) x / 4 = 3 → <input id="r4q8"></p>
-
-<button onclick="checkRoom4()">Check</button>
-<p id="r4result"></p>
-<button onclick="goHome()">Terug</button>
-</div>
-
 <script>
-let code = ["3","7","1","9"];
+// CODE (1 cijfer per escape room)
+let code = ["3", "6", "9"];
 
+// NAVIGATIE
 function openRoom(n) {
     document.getElementById("home").style.display = "none";
-    document.getElementById("room"+n).style.display = "block";
+    document.getElementById("room" + n).style.display = "block";
 }
-
 function goHome() {
     location.reload();
 }
 
+// ROOM 1
 function checkRoom1() {
     let answers = [15,8,16,6,13,5,10,12];
-    checkRoom("r1", answers, 0);
-}
-function checkRoom2() {
-    let answers = [4,6,16,10,7,6,9,5];
-    checkRoom("r2", answers, 1);
-}
-function checkRoom3() {
-    let answers = [4,8,10,4,5,3,4,10];
-    checkRoom("r3", answers, 2);
-}
-function checkRoom4() {
-    let answers = [5,8,10,6,7,6,3,12];
-    checkRoom("r4", answers, 3);
-}
-
-function checkRoom(prefix, answers, index) {
-    for (let i=1;i<=8;i++) {
-        if (document.getElementById(prefix+"q"+i).value != answers[i-1]) {
-            document.getElementById(prefix+"result").innerText = "❌ Niet alles is goed!";
+    for (let i=1;i<=8;i++){
+        if (document.getElementById("r1q"+i).value != answers[i-1]){
+            document.getElementById("r1result").innerText = "❌ Niet alles klopt";
             return;
         }
     }
-    document.getElementById(prefix+"result").innerHTML =
-        "✅ Escape Room voltooid! Jouw cijfer is: <b>"+code[index]+"</b>";
+    document.getElementById("r1result").innerHTML =
+    "✅ Goed! Jouw cijfer is <b>3</b>";
 }
 
+// ROOM 2
+function checkRoom2() {
+    let answers = [40,48,90];
+    for (let i=1;i<=3;i++){
+        if (document.getElementById("r2q"+i).value != answers[i-1]){
+            document.getElementById("r2result").innerText = "❌ Probeer opnieuw";
+            return;
+        }
+    }
+    document.getElementById("r2result").innerHTML =
+    "✅ Escape Room voltooid! Jouw cijfer is <b>6</b>";
+}
+
+// ROOM 3
+function checkRoom3() {
+    let answers = [28.26,78.5,153.86,314];
+    for (let i=1;i<=4;i++){
+        if (document.getElementById("r3q"+i).value != answers[i-1]){
+            document.getElementById("r3result").innerText = "❌ Niet alles klopt";
+            return;
+        }
+    }
+    document.getElementById("r3result").innerHTML =
+    "✅ Goed gedaan! Jouw cijfer is <b>9</b>";
+}
+
+// EINDCODE
 function checkFinal() {
     if (document.getElementById("finalCode").value === code.join("")) {
-        document.getElementById("victory").innerHTML = "<span class='success'>🏆 VICTORY! 🏆</span>";
+        document.getElementById("victory").innerHTML =
+        "<span class='success'>🏆 VICTORY! 🏆</span>";
     } else {
-        document.getElementById("victory").innerText = "❌ Foute code!";
+        document.getElementById("victory").innerText = "❌ Foute code";
     }
 }
 </script>
