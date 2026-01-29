@@ -9,7 +9,7 @@
     color: #f1f1f1;
     text-align: center;
     padding: 20px;
-    background-image: url('black-pyramid-with-yellow-light-nw4zhdruuxwl65z5.jpg'); 
+    background-image: url('black-pyramid-with-yellow-light-nw4zhdruuxwl65z5.jpg'); /* <- hier je afbeelding */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -31,7 +31,7 @@
     border-radius: 12px;
     border: 2px solid #ff4747;
   }
-  input {
+  input, .editable-cell {
     padding: 6px;
     width: 90px;
     font-size: 16px;
@@ -39,6 +39,13 @@
     color: #fff;
     border: 1px solid #ff4747;
     border-radius: 5px;
+    text-align: center;
+  }
+  .editable-cell {
+    display: inline-block;
+    min-width: 60px;
+    margin: 2px;
+    cursor: text;
   }
   button {
     padding: 10px 22px;
@@ -108,6 +115,18 @@
     border: none; border-radius: 6px; cursor: pointer; z-index: 1000;
   }
 
+  /* Tabellen stijl */
+  table {
+    margin: auto;
+    border-collapse: collapse;
+    color: white;
+    margin-bottom: 15px;
+  }
+  th, td {
+    border: 2px solid #ff4747;
+    padding: 8px 12px;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
@@ -129,7 +148,7 @@
   <button onclick="openRoom(3)">Escape Room 3 – Het Doolhof van Omrekeningen</button>
   <button onclick="openRoom(4)">Escape Room 4 – De Zaal der Kortingen</button>
   <button onclick="openRoom(5)">Escape Room 5 – De Val van de Procenten</button>
-  <button onclick="openRoom(6)">Escape Room 6 – De Tafel van de Tijden</button>
+  <button onclick="openRoom(6)">Escape Room 6 – De Tabel van Groei</button>
   <button onclick="openRoom(7)">Escape Room 7 – De Gouden Code</button>
 
   <h3>🔢 Eindcode</h3>
@@ -142,14 +161,14 @@
 <!-- ROOMS (1 t/m 7) -->
 <div class="room" id="room1">
   <h2>Escape Room 1 – Het Pad naar de Hel</h2>
-  <p>1) y = 3x + 5, y = 20 → x = <input id="r1q1"></p>
-  <p>2) y = 2x + 4, y = 14 → x = <input id="r1q2"></p>
-  <p>3) y = x − 2, y = 6 → x = <input id="r1q3"></p>
-  <p>4) y = 5x, y = 25 → x = <input id="r1q4"></p>
-  <p>5) y = 4x − 3, y = 13 → x = <input id="r1q5"></p>
-  <p>6) y = x + 7, y = 15 → x = <input id="r1q6"></p>
-  <p>7) y = 2x + 6, y = 16 → x = <input id="r1q7"></p>
-  <p>8) y = x/2 + 1, y = 5 → x = <input id="r1q8"></p>
+  <p>1) 4x + 6 = 34 → x = <input id="r1q1"></p>
+  <p>2) 5x − 3 = 22 → x = <input id="r1q2"></p>
+  <p>3) 6x + 2 = 20 → x = <input id="r1q3"></p>
+  <p>4) 7x − 7 = 28 → x = <input id="r1q4"></p>
+  <p>5) 3x + 5 = 26 → x = <input id="r1q5"></p>
+  <p>6) 2x − 4 = 10 → x = <input id="r1q6"></p>
+  <p>7) 9x + 1 = 82 → x = <input id="r1q7"></p>
+  <p>8) 8x − 2 = 46 → x = <input id="r1q8"></p>
   <button onclick="checkRoom1()">Check</button>
   <p id="r1result"></p>
   <button onclick="goHome()">Terug</button>
@@ -157,9 +176,10 @@
 
 <div class="room" id="room2">
   <h2>Escape Room 2 – De Kamer van de Duistere Breuken</h2>
-  <p>Tabel: x = 0,1,2 → y = 4,7,10</p>
-  <p>Toename = <input id="r2q1"></p>
-  <p>Formule: y = <input id="r2q2">x + <input id="r2q3"></p>
+  <p>1) 1/3 + 1/6 = <input id="r2q1"></p>
+  <p>2) 3/4 − 1/8 = <input id="r2q2"></p>
+  <p>3) 2/5 × 5/6 = <input id="r2q3"></p>
+  <p>4) 3/7 ÷ 2/3 = <input id="r2q4"></p>
   <button onclick="checkRoom2()">Check</button>
   <p id="r2result"></p>
   <button onclick="goHome()">Terug</button>
@@ -167,9 +187,10 @@
 
 <div class="room" id="room3">
   <h2>Escape Room 3 – Het Doolhof van Omrekeningen</h2>
-  <p>Grafiek snijdt y-as bij 2 en gaat door (4,10)</p>
-  <p>Toename = <input id="r3q1"></p>
-  <p>Formule: y = <input id="r3q2">x + <input id="r3q3"></p>
+  <p>1) Hoeveel liter is 500 milliliter? → <input id="r3q1"> L</p>
+  <p>2) Hoeveel centimeter is 3 meter? → <input id="r3q2"> cm</p>
+  <p>3) 1500 gram = <input id="r3q3"> kilogram</p>
+  <p>4) 12 kilometer = <input id="r3q4"> meter</p>
   <button onclick="checkRoom3()">Check</button>
   <p id="r3result"></p>
   <button onclick="goHome()">Terug</button>
@@ -177,8 +198,10 @@
 
 <div class="room" id="room4">
   <h2>Escape Room 4 – De Zaal der Kortingen</h2>
-  <p>y = 3x + 1, x = 5 → y = <input id="r4q1"></p>
-  <p>y = 2x − 4, x = 8 → y = <input id="r4q2"></p>
+  <p>1) €50 met 20% korting → <input id="r4q1"> €</p>
+  <p>2) €80 met 25% korting → <input id="r4q2"> €</p>
+  <p>3) €100 met 10% korting → <input id="r4q3"> €</p>
+  <p>4) €120 met 15% korting → <input id="r4q4"> €</p>
   <button onclick="checkRoom4()">Check</button>
   <p id="r4result"></p>
   <button onclick="goHome()">Terug</button>
@@ -186,22 +209,34 @@
 
 <div class="room" id="room5">
   <h2>Escape Room 5 – De Val van de Procenten</h2>
-  <p>Taxi: €3 start + €2 per km</p>
-  <p>Formule: y = <input id="r5q1">x + <input id="r5q2"></p>
-  <p>Prijs bij 7 km = <input id="r5q3"></p>
+  <p>1) 30% van 150 → <input id="r5q1"> €</p>
+  <p>2) 10% korting op €200 → <input id="r5q2"> €</p>
+  <p>3) 45% van 400 → <input id="r5q3"> €</p>
   <button onclick="checkRoom5()">Check</button>
   <p id="r5result"></p>
   <button onclick="goHome()">Terug</button>
 </div>
 
 <div class="room" id="room6">
-  <h2>Escape Room 6 – De Tafel van de Tijden</h2>
-  <table style="margin: auto; border:1px solid white; margin-bottom: 15px;">
-    <tr><th>x</th><th>1</th><th>3</th><th>5</th></tr>
-    <tr><th>y</th><th>4</th><th>8</th><th>12</th></tr>
+  <h2>Escape Room 6 – De Tabel van Groei</h2>
+  <p>Vul de ontbrekende waarden in de tabel. De getallen groeien volgens de pijlen: ×2, ×3, ×2.</p>
+  <table>
+    <tr>
+      <th>Gewicht (kg)</th>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_1">3</td>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_2">6</td>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_3">18</td>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_4">36</td>
+    </tr>
+    <tr>
+      <th>Bedrag (€)</th>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_5">7</td>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_6">14</td>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_7">42</td>
+      <td contenteditable="true" class="editable-cell" id="tbl_r6_8">84</td>
+    </tr>
   </table>
-  <p>Toename = <input id="r6q1"></p>
-  <p>y bij x = 9 → <input id="r6q2"></p>
+  <p>Formule: Bedrag = <input id="r6_formula" placeholder="bijv. 2x+1" style="width: 130px;"></p>
   <button onclick="checkRoom6()">Check</button>
   <p id="r6result"></p>
   <button onclick="goHome()">Terug</button>
@@ -209,8 +244,16 @@
 
 <div class="room" id="room7">
   <h2>Escape Room 7 – De Gouden Code</h2>
-  <p>y = 2x + 4, x = 6 → y = <input id="r7q1"></p>
-  <p>y = 4x − 4, y = 20 → x = <input id="r7q2"></p>
+  <p>1) Wat is de uitkomst van 4²?</p>
+  <input id="r7q1">
+  <p>2) Wat is √64?</p>
+  <input id="r7q2">
+  <p>3) Wat is de uitkomst van: 7 × (5 − 2)?</p>
+  <input id="r7q3">
+  <p>4) Als 4 kopjes suiker gelijk zijn aan 6 kopjes meel, hoeveel kopjes meel heb je dan nodig voor 10 kopjes suiker?</p>
+  <input id="r7q4">
+  <p>5) Als 5 appels gelijk zijn aan 7 sinaasappels, hoeveel appels heb je dan nodig voor 14 sinaasappels?</p>
+  <input id="r7q5">
   <button onclick="checkRoom7()">Check</button>
   <p id="r7result"></p>
   <button onclick="goHome()">Terug</button>
@@ -221,36 +264,200 @@
 <div id="story">
 <h2>Het Verhaal van de Pyramide van de Duivel</h2>
 <p>
-Lang geleden, diep in de woestijn, stond een piramide die door niemand betreden durfde te worden...
+Lang geleden, diep in de woestijn, stond een piramide die door niemand betreden durfde te worden. Men zei dat hij de ziel van elke onvoorzichtige avonturier gevangen hield in een labyrint van raadsels en wiskundige vallen.
+</p>
+<p>
+Jarenlang werd de piramide omgeven door geheimzinnige verhalen: wie alle kamers oploste en de cijfers correct verzamelde, zou de legendarische Gouden Code ontdekken – een code die rijkdom, kennis en gevaarlijke krachten combineerde.
+</p>
+<p>
+Jij bent nu die dappere avonturier. Iedere kamer die je betreedt test niet alleen je verstand, maar ook je doorzettingsvermogen. Van het Pad naar de Hel, vol lineaire puzzels, tot de Kamer van de Duistere Breuken, en het Doolhof van Omrekeningen, elke uitdaging brengt je dichter bij de ultieme waarheid.
+</p>
+<p>
+De lucht wordt zwaarder, de muren lijken te ademen, en schaduwen fluisteren waarschuwingen. Alleen wie scherp van geest is, zal het laatste cijfer vinden en de Gouden Code ontgrendelen. Durf jij het avontuur te voltooien en de geheimen van de piramide te onthullen?
+</p>
+<p>
+Terwijl je verder loopt, voel je een kilte over je rug. Fluisteringen van vroegere avonturiers zweven rond je hoofd: "Laat je niet misleiden door wat je ziet… elke fout kan fataal zijn."
+</p>
+<p>
+Je ziet vlammen dansen op de muren, die in ritme lijken te bewegen met je hartslag. Oude inscripties vertellen over verloren kennis en vergeten macht. Het pad wordt nauwer, je stappen echoën in de donkere gangen, en de tijd lijkt te vertragen.
+</p>
+<p>
+De piramide wacht op een ware meester, iemand die geduld, wijsheid en moed bezit. Alleen de slimste avonturiers zullen de kamers vol raadsels overleven en de Gouden Code ontdekken. De piramide is levend… en observeert elke beweging.
+</p>
+<p>
+De tijd tikt… en elke seconde brengt je dichter bij de ultieme test. Durf jij het laatste cijfer te vinden en de geheimen te ontsluiten?
 </p>
 </div>
 
 <script>
 // 7-cijferige code
-const code = ["3","6","9","8","5","7","1"];
+const code = ["4","5","3","7","8","9","2"];
 
 // Room checks
-function checkRoom1(){ const ans=[5,5,8,5,4,8,5,8]; for(let i=1;i<=8;i++){ if(parseFloat(document.getElementById("r1q"+i).value)!=ans[i-1]) return document.getElementById("r1result").innerText="❌ Probeer opnieuw"; } document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>3</b>"; }
-function checkRoom2(){ const ans=[3,3,4]; for(let i=1;i<=3;i++){ if(parseFloat(document.getElementById("r2q"+i).value)!=ans[i-1]) return document.getElementById("r2result").innerText="❌ Probeer opnieuw"; } document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>6</b>"; }
-function checkRoom3(){ const ans=[2,2,2]; for(let i=1;i<=3;i++){ if(parseFloat(document.getElementById("r3q"+i).value)!=ans[i-1]) return document.getElementById("r3result").innerText="❌ Probeer opnieuw"; } document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>9</b>"; }
-function checkRoom4(){ const ans=[16,12]; for(let i=1;i<=2;i++){ if(parseFloat(document.getElementById("r4q"+i).value)!=ans[i-1]) return document.getElementById("r4result").innerText="❌ Probeer opnieuw"; } document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>8</b>"; }
-function checkRoom5(){ const ans=[2,3,17]; for(let i=1;i<=3;i++){ if(parseFloat(document.getElementById("r5q"+i).value)!=ans[i-1]) return document.getElementById("r5result").innerText="❌ Probeer opnieuw"; } document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>"; }
-function checkRoom6(){ const ans=[2,18]; for(let i=1;i<=2;i++){ if(parseFloat(document.getElementById("r6q"+i).value)!=ans[i-1]) return document.getElementById("r6result").innerText="❌ Probeer opnieuw"; } document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>"; }
-function checkRoom7(){ const ans=[16,6]; for(let i=1;i<=2;i++){ if(parseFloat(document.getElementById("r7q"+i).value)!=ans[i-1]) return document.getElementById("r7result").innerText="❌ Probeer opnieuw"; } document.getElementById("r7result").innerHTML="✅ Jouw cijfer: <b>10</b>"; }
+function checkRoom1() {
+  const ans = [7,5,3,5,7,7,9,6]; // antwoorden x
+  const inputs = [document.getElementById("r1q1").value,
+                  document.getElementById("r1q2").value,
+                  document.getElementById("r1q3").value,
+                  document.getElementById("r1q4").value,
+                  document.getElementById("r1q5").value,
+                  document.getElementById("r1q6").value,
+                  document.getElementById("r1q7").value,
+                  document.getElementById("r1q8").value];
+  for(let i=0; i<ans.length; i++) {
+    if(parseFloat(inputs[i]) !== ans[i]) {
+      document.getElementById("r1result").innerText = "❌ Probeer opnieuw";
+      return;
+    }
+  }
+  document.getElementById("r1result").innerHTML = "✅ Jouw cijfer: <b>4</b>";
+}
 
-// Eindcode check
-function checkFinal(){ const userCode=document.getElementById("finalCode").value; if(userCode===code.join("")){ document.getElementById("victory").innerHTML="<span class='success'>🏆 VICTORY! 🏆</span>"; } else { document.getElementById("victory").innerText="❌ Foute code!"; } }
+function checkRoom2() {
+  const ans = [0.5,0.625,0.4,2.25];
+  for(let i=1; i<=4; i++) {
+    const val = parseFloat(document.getElementById("r2q"+i).value);
+    if(Math.abs(val - ans[i-1]) > 0.01) {
+      document.getElementById("r2result").innerText = "❌ Probeer opnieuw";
+      return;
+    }
+  }
+  document.getElementById("r2result").innerHTML = "✅ Jouw cijfer: <b>5</b>";
+}
 
-// Navigatie
-function openRoom(n){ document.getElementById("home").style.display="none"; document.getElementById("room"+n).style.display="block"; }
-function goHome(){ location.reload(); }
+function checkRoom3() {
+  const ans = [0.5,300,1.5,12000];
+  for(let i=1; i<=4; i++) {
+    const val = parseFloat(document.getElementById("r3q"+i).value);
+    if(Math.abs(val - ans[i-1]) > 0.1) {
+      document.getElementById("r3result").innerText = "❌ Probeer opnieuw";
+      return;
+    }
+  }
+  document.getElementById("r3result").innerHTML = "✅ Jouw cijfer: <b>3</b>";
+}
 
-// Kladblok
-function toggleNotepad(){ const n=document.getElementById("notepad"); n.style.display=n.style.display==="block"?"none":"block"; }
-function closeNotepad(){ document.getElementById("notepad").style.display="none"; }
+function checkRoom4() {
+  const ans = [40,60,90,102];
+  for(let i=1; i<=4; i++) {
+    const val = parseFloat(document.getElementById("r4q"+i).value);
+    if(Math.abs(val - ans[i-1]) > 0.1) {
+      document.getElementById("r4result").innerText = "❌ Probeer opnieuw";
+      return;
+    }
+  }
+  document.getElementById("r4result").innerHTML = "✅ Jouw cijfer: <b>7</b>";
+}
+
+function checkRoom5() {
+  const ans = [45,180,180];
+  for(let i=1; i<=3; i++) {
+    const val = parseFloat(document.getElementById("r5q"+i).value);
+    if(Math.abs(val - ans[i-1]) > 0.1) {
+      document.getElementById("r5result").innerText = "❌ Probeer opnieuw";
+      return;
+    }
+  }
+  document.getElementById("r5result").innerHTML = "✅ Jouw cijfer: <b>8</b>";
+}
+
+function checkRoom6() {
+  // Juiste tabelwaarden
+  const answers = {
+    tbl_r6_1: 3,
+    tbl_r6_2: 6,
+    tbl_r6_3: 18,
+    tbl_r6_4: 36,
+    tbl_r6_5: 7,
+    tbl_r6_6: 14,
+    tbl_r6_7: 42,
+    tbl_r6_8: 84,
+    formula: "2x+1"
+  };
+
+  for(let i=1; i<=8; i++) {
+    let val = document.getElementById("tbl_r6_" + i).innerText.trim();
+    val = val.replace(',', '.'); // comma->punt
+    if(isNaN(val) || Number(val) !== answers["tbl_r6_" + i]){
+      document.getElementById("r6result").innerText = "❌ Vul de juiste getallen in de tabel in.";
+      return;
+    }
+  }
+  let formulaInput = document.getElementById("r6_formula").value.replace(/\s/g, '').toLowerCase();
+  if(formulaInput !== answers.formula) {
+    document.getElementById("r6result").innerText = "❌ De formule klopt niet.";
+    return;
+  }
+  document.getElementById("r6result").innerHTML = "✅ Goed gedaan! Jouw cijfer: <b>6</b>";
+}
+
+function checkRoom7() {
+  const ans = [16,8,21,15,10];
+  for(let i=1; i<=5; i++) {
+    if(parseFloat(document.getElementById("r7q"+i).value) !== ans[i-1]) {
+      document.getElementById("r7result").innerText = "❌ Probeer opnieuw";
+      return;
+    }
+  }
+  document.getElementById("r7result").innerHTML = "✅ Jouw cijfer: <b>9</b>";
+}
+
+// Final code check
+function checkFinal() {
+  const inputCode = document.getElementById("finalCode").value;
+  if(inputCode.length !== 7){
+    document.getElementById("victory").innerText = "❌ De code moet 7 cijfers bevatten.";
+    return;
+  }
+  for(let i=0; i<7; i++){
+    if(inputCode[i] !== code[i]){
+      document.getElementById("victory").innerText = "❌ Foute code, probeer opnieuw.";
+      return;
+    }
+  }
+  document.getElementById("victory").innerHTML = "<span class='success'>🎉 Gefeliciteerd! Je hebt de pyramide ontsloten! 🎉</span>";
+}
+
+// Show/Hide Rooms
+function openRoom(num) {
+  document.getElementById("home").style.display = "none";
+  for(let i=1; i<=7; i++){
+    document.getElementById("room"+i).style.display = "none";
+  }
+  document.getElementById("room"+num).style.display = "block";
+  clearResults();
+}
+
+function goHome() {
+  document.getElementById("home").style.display = "block";
+  for(let i=1; i<=7; i++){
+    document.getElementById("room"+i).style.display = "none";
+  }
+  clearResults();
+}
+
+function clearResults(){
+  // Clear all result fields
+  for(let i=1; i<=7; i++){
+    let res = document.getElementById("r"+i+"result");
+    if(res) res.innerText = "";
+  }
+}
+
+// Notepad toggle
+function toggleNotepad(){
+  const pad = document.getElementById("notepad");
+  pad.style.display = pad.style.display === "block" ? "none" : "block";
+}
+function closeNotepad(){
+  document.getElementById("notepad").style.display = "none";
+}
 
 // Verhaal toggle
-function toggleStory(){ const s=document.getElementById("story"); s.style.display=s.style.display==="block"?"none":"block"; }
+function toggleStory(){
+  const s = document.getElementById("story");
+  s.style.display = s.style.display === "block" ? "none" : "block";
+}
 </script>
 
 </body>
