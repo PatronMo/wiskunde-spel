@@ -5,359 +5,211 @@
 <title>Pyramide van de Duivel🔥👹 - Nieuwe Wiskunde</title>
 <style>
 body {
-  font-family: 'Arial', sans-serif;
-  color: #f1f1f1;
-  text-align: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #1e1e1e, #3c0a0a);
+    font-family: 'Arial', sans-serif; color: #f1f1f1; text-align: center; padding: 20px; background: linear-gradient(135deg, #1e1e1e, #3c0a0a);
 }
-h1, h2, h3 {
-  font-family: 'Impact', sans-serif;
-  color: #ff4747;
-  text-shadow: 2px 2px 6px black;
-}
+h1, h2, h3 { font-family: 'Impact', sans-serif; color: #ff4747; text-shadow: 2px 2px 6px black; }
 h1 { font-size: 48px; margin-bottom: 10px; }
 h2 { margin-top: 0; }
-.room {
-  display: none;
-  background: rgba(0,0,0,0.85);
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 700px;
-  border-radius: 12px;
-  border: 2px solid #ff4747;
-  text-align: left;
-}
-input, textarea {
-  padding: 6px;
-  font-size: 16px;
-  background: #2e1f30;
-  color: #fff;
-  border: 1px solid #ff4747;
-  border-radius: 5px;
-}
+.room { display: none; background: rgba(0,0,0,0.85); padding: 20px; margin: 20px auto; max-width: 700px; border-radius: 12px; border: 2px solid #ff4747; text-align: left; }
+input, textarea { padding: 6px; font-size: 16px; background: #2e1f30; color: #fff; border: 1px solid #ff4747; border-radius: 5px; }
 input { width: 90px; }
-button {
-  padding: 10px 22px;
-  margin: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  background: #ff4747;
-  border: 1px solid #fff;
-  border-radius: 6px;
-  color: white;
-}
+button { padding: 10px 22px; margin: 8px; cursor: pointer; font-size: 16px; background: #ff4747; border: 1px solid #fff; border-radius: 6px; color: white; }
 button:hover { background: #ff1e1e; }
 .success { color: #22c55e; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 8px black; }
 table { margin: 15px auto; border-collapse: collapse; color: white; }
 th, td { border: 1px solid #ff4747; padding: 10px 15px; min-width: 50px; text-align: center; }
 td[contenteditable="true"] { background: #3a1a1a; outline: none; cursor: text; }
 .formula-input { width: 160px; }
+
+/* Story popup */
+#storyPopup {
+    display:none;
+    position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+    background: rgba(0,0,0,0.95); padding:25px;
+    border:2px solid #ff4747; border-radius:12px; max-width:700px; color:#f1f1f1; text-align:left; z-index:1000;
+}
+#storyPopup h2{text-align:center;}
+#storyPopup p{line-height:1.6;}
+#closeStory{display:block;margin:15px auto 0;padding:8px 20px;background:#ff4747;color:white;border:none;border-radius:6px;cursor:pointer;}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <div id="home">
-  <h1>Pyramide van de Duivel🔥👹</h1>
-  <p><b>Los alle escape rooms op en verzamel de cijfers om te ontsnappen!</b></p>
+<h1>Pyramide van de Duivel🔥👹</h1>
+<p><b>Los alle escape rooms op en verzamel de cijfers om te ontsnappen!</b></p>
 
-  <button onclick="openRoom(1)">Escape Room 1 – Veulens</button>
-  <button onclick="openRoom(2)">Escape Room 2 – Breuken en Verhoudingen</button>
-  <button onclick="openRoom(3)">Escape Room 3 – Omrekeningen & Tabellen</button>
-  <button onclick="openRoom(4)">Escape Room 4 – Kortingen en Procenten</button>
-  <button onclick="openRoom(5)">Escape Room 5 – Procenten Berekeningen</button>
-  <button onclick="openRoom(6)">Escape Room 6 – Groei Tabellen</button>
-  <button onclick="openRoom(7)">Escape Room 7 – Exponenten & Wortels</button>
+<button onclick="openStory()">Verhaal</button>
 
-  <h3>🔢 Eindcode</h3>
-  <input id="finalCode" maxlength="7" placeholder="code" />
-  <br>
-  <button onclick="checkFinal()">Check code</button>
-  <p id="victory"></p>
+<button onclick="openRoom(1)">Escape Room 1 – Lineaire Puzzels</button>
+<button onclick="openRoom(2)">Escape Room 2 – Breuken en Verhoudingen</button>
+<button onclick="openRoom(3)">Escape Room 3 – Omrekeningen & Tabellen</button>
+<button onclick="openRoom(4)">Escape Room 4 – Kortingen en Procenten</button>
+<button onclick="openRoom(5)">Escape Room 5 – Procenten Berekeningen</button>
+<button onclick="openRoom(6)">Escape Room 6 – Groei Tabellen</button>
+<button onclick="openRoom(7)">Escape Room 7 – Exponenten & Wortels</button>
+
+<h3>🔢 Eindcode</h3>
+<input id="finalCode" maxlength="7" placeholder="code" />
+<br>
+<button onclick="checkFinal()">Check code</button>
+<p id="victory"></p>
+</div>
+
+<!-- Story Popup -->
+<div id="storyPopup">
+<h2>Het Verhaal van de Pyramide van de Duivel</h2>
+<p>
+Diep in de woestijn staat een oude piramide, gehuld in duisternis en mysterie. Niemand durft binnen te gaan, want de legende zegt dat wie de piramide betreedt nooit meer terugkeert… tenzij je de geheimen kunt ontsluiten.
+</p>
+<p>
+Jij bent de dappere avonturier die de uitdaging aandurft. Elke kamer bevat puzzels, raadsels en wiskundige uitdagingen. Alleen wie slim rekent en goed oplet, verzamelt de cijfers die nodig zijn om de eindcode te kraken en te ontsnappen.
+</p>
+<p>
+De muren fluisteren, de lucht is zwaar en de tijd dringt. Kun jij de Pyramide van de Duivel overleven en als winnaar uit de piramide komen?
+</p>
+<button id="closeStory" onclick="closeStory()">Sluit Verhaal</button>
 </div>
 
 <!-- Escape Room 1 -->
 <div class="room" id="room1">
-  <h2>Escape Room 1 – De Veulens 🐴</h2>
-
-  <button onclick="openStory()">📖 Verhaal</button>
-  <div id="story" style="display:none; background:#2e1f30; color:white; padding:15px; border:2px solid #ff4747; border-radius:10px; margin-top:10px;">
-    <p>Op de boerderij zijn twee veulens geboren: <b>Misty</b> en <b>Njelka</b>.</p>
-    <p>Misty: gewicht (kg) = 25 + 6y</p>
-    <p>Njelka: gewicht (kg) = 35 + 4t</p>
-    <p>Jouw taak: onderzoek welk veulen het zwaarst is bij de geboorte, wanneer ze even zwaar zijn en hoeveel ze dan wegen. Gebruik het kladblok hieronder voor je berekeningen.</p>
-    <textarea id="r1Notes" rows="6" placeholder="Maak hier je berekeningen en notities..."></textarea>
-  </div>
-
-  <p>a) Welk veulen is het zwaarst bij de geboorte?</p>
-  <input id="r1q1">
-
-  <p>b) Na hoeveel maanden zijn de veulens even zwaar?</p>
-  <input id="r1q2">
-
-  <p>c) Hoeveel kg wegen ze dan ongeveer?</p>
-  <input id="r1q3">
-
-  <p>d) Welk veulen is het zwaarst na 10 maanden?</p>
-  <input id="r1q4">
-
-  <p>e) Hoeveel kg verschil is er na 10 maanden?</p>
-  <input id="r1q5">
-
-  <canvas id="grafiekVeulens" style="margin-top:15px;"></canvas>
-
-  <button onclick="checkRoom1()">Check</button>
-  <p id="r1result"></p>
-  <button onclick="goHome()">Terug</button>
+<h2>Escape Room 1 – Lineaire Puzzels</h2>
+<p>1) 4x + 7 = 31 → x = <input id="r1q1" /></p>
+<p>2) 5x - 9 = 16 → x = <input id="r1q2" /></p>
+<p>3) x/3 + 5 = 9 → x = <input id="r1q3" /></p>
+<p>4) 7x = 56 → x = <input id="r1q4" /></p>
+<p>5) 3x + 2 = 17 → x = <input id="r1q5" /></p>
+<button onclick="checkRoom1()">Check</button>
+<p id="r1result"></p>
+<button onclick="goHome()">Terug</button>
 </div>
 
 <!-- Escape Room 2 -->
 <div class="room" id="room2">
-  <h2>Escape Room 2 – Breuken en Verhoudingen</h2>
-  <p>1) 2/3 + 1/6 = <input id="r2q1" /></p>
-  <p>2) 5/8 − 1/4 = <input id="r2q2" /></p>
-  <p>3) 3/5 × 10 = <input id="r2q3" /></p>
-  <p>4) (2/3) ÷ (1/6) = <input id="r2q4" /></p>
-  <button onclick="checkRoom2()">Check</button>
-  <p id="r2result"></p>
-  <button onclick="goHome()">Terug</button>
+<h2>Escape Room 2 – Breuken en Verhoudingen</h2>
+<p>1) 2/3 + 1/6 = <input id="r2q1" /></p>
+<p>2) 5/8 − 1/4 = <input id="r2q2" /></p>
+<p>3) 3/5 × 10 = <input id="r2q3" /></p>
+<p>4) (2/3) ÷ (1/6) = <input id="r2q4" /></p>
+<button onclick="checkRoom2()">Check</button>
+<p id="r2result"></p>
+<button onclick="goHome()">Terug</button>
 </div>
 
 <!-- Escape Room 3 -->
 <div class="room" id="room3">
-  <h2>Escape Room 3 – Omrekeningen & Tabellen</h2>
-  <p>Vul de juiste waarden in de tabel (de rijen zijn gekoppeld):</p>
-  <table>
-    <tr>
-      <th>Lengte (m)</th>
-      <td contenteditable="true" id="tbl_r3_1"></td>
-      <td contenteditable="true" id="tbl_r3_2"></td>
-      <td contenteditable="true" id="tbl_r3_3"></td>
-      <td contenteditable="true" id="tbl_r3_4"></td>
-    </tr>
-    <tr>
-      <th>Lengte (cm)</th>
-      <td contenteditable="true" id="tbl_r3_5"></td>
-      <td contenteditable="true" id="tbl_r3_6"></td>
-      <td contenteditable="true" id="tbl_r3_7"></td>
-      <td contenteditable="true" id="tbl_r3_8"></td>
-    </tr>
-  </table>
-  <p>Wat is de formule om van meter naar centimeter te gaan? Vul hier in:</p>
-  <input type="text" id="r3_formula" class="formula-input" placeholder="bijv. x * 100" />
-  <br><br>
-  <button onclick="checkRoom3()">Check</button>
-  <p id="r3result"></p>
-  <button onclick="goHome()">Terug</button>
+<h2>Escape Room 3 – Omrekeningen & Tabellen</h2>
+<p>Vul de juiste waarden in de tabel (de rijen zijn gekoppeld):</p>
+<table>
+<tr><th>Lengte (m)</th><td contenteditable="true" id="tbl_r3_1"></td><td contenteditable="true" id="tbl_r3_2"></td><td contenteditable="true" id="tbl_r3_3"></td><td contenteditable="true" id="tbl_r3_4"></td></tr>
+<tr><th>Lengte (cm)</th><td contenteditable="true" id="tbl_r3_5"></td><td contenteditable="true" id="tbl_r3_6"></td><td contenteditable="true" id="tbl_r3_7"></td><td contenteditable="true" id="tbl_r3_8"></td></tr>
+</table>
+<p>Wat is de formule om van meter naar centimeter te gaan? Vul hier in:</p>
+<input type="text" id="r3_formula" class="formula-input" placeholder="bijv. x * 100" /><br><br>
+<button onclick="checkRoom3()">Check</button>
+<p id="r3result"></p>
+<button onclick="goHome()">Terug</button>
 </div>
 
 <!-- Escape Room 4 -->
 <div class="room" id="room4">
-  <h2>Escape Room 4 – Kortingen en Procenten</h2>
-  <p>1) €80 met 25% korting → <input id="r4q1" /> €</p>
-  <p>2) €150 met 10% korting → <input id="r4q2" /> €</p>
-  <p>3) €200 met 40% korting → <input id="r4q3" /> €</p>
-  <p>4) €100 met 15% korting → <input id="r4q4" /> €</p>
-  <button onclick="checkRoom4()">Check</button>
-  <p id="r4result"></p>
-  <button onclick="goHome()">Terug</button>
+<h2>Escape Room 4 – Kortingen en Procenten</h2>
+<p>1) €80 met 25% korting → <input id="r4q1" /> €</p>
+<p>2) €150 met 10% korting → <input id="r4q2" /> €</p>
+<p>3) €200 met 40% korting → <input id="r4q3" /> €</p>
+<p>4) €100 met 15% korting → <input id="r4q4" /> €</p>
+<button onclick="checkRoom4()">Check</button>
+<p id="r4result"></p>
+<button onclick="goHome()">Terug</button>
 </div>
 
 <!-- Escape Room 5 -->
 <div class="room" id="room5">
-  <h2>Escape Room 5 – Procenten Berekeningen</h2>
-  <p>1) 20% van 120 = <input id="r5q1" /> €</p>
-  <p>2) 35% korting op €180 = <input id="r5q2" /> €</p>
-  <p>3) 50% van 90 = <input id="r5q3" /> €</p>
-  <button onclick="checkRoom5()">Check</button>
-  <p id="r5result"></p>
-  <button onclick="goHome()">Terug</button>
+<h2>Escape Room 5 – Procenten Berekeningen</h2>
+<p>1) 20% van 120 = <input id="r5q1" /> €</p>
+<p>2) 35% korting op €180 = <input id="r5q2" /> €</p>
+<p>3) 50% van 90 = <input id="r5q3" /> €</p>
+<button onclick="checkRoom5()">Check</button>
+<p id="r5result"></p>
+<button onclick="goHome()">Terug</button>
 </div>
 
 <!-- Escape Room 6 -->
 <div class="room" id="room6">
-  <h2>Escape Room 6 – Groei Tabellen</h2>
-  <p>Vul de tabel in. De getallen groeien volgens de pijlen ×2, ×3, ×2.</p>
-  <table>
-    <tr>
-      <th>Gewicht (kg)</th>
-      <td contenteditable="true" id="tbl_r6_1"></td>
-      <td contenteditable="true" id="tbl_r6_2"></td>
-      <td contenteditable="true" id="tbl_r6_3"></td>
-      <td contenteditable="true" id="tbl_r6_4"></td>
-    </tr>
-    <tr>
-      <th>Bedrag (€)</th>
-      <td contenteditable="true" id="tbl_r6_5"></td>
-      <td contenteditable="true" id="tbl_r6_6"></td>
-      <td contenteditable="true" id="tbl_r6_7"></td>
-      <td contenteditable="true" id="tbl_r6_8"></td>
-    </tr>
-  </table>
-  <p>Formule: Bedrag = <input type="text" id="r6_formula" class="formula-input" placeholder="bijv. 2x + 1" /></p>
-  <button onclick="checkRoom6()">Check</button>
-  <p id="r6result"></p>
-  <button onclick="goHome()">Terug</button>
+<h2>Escape Room 6 – Groei Tabellen</h2>
+<p>Vul de tabel in. De getallen groeien volgens de pijlen ×2, ×3, ×2.</p>
+<table>
+<tr><th>Gewicht (kg)</th><td contenteditable="true" id="tbl_r6_1"></td><td contenteditable="true" id="tbl_r6_2"></td><td contenteditable="true" id="tbl_r6_3"></td><td contenteditable="true" id="tbl_r6_4"></td></tr>
+<tr><th>Bedrag (€)</th><td contenteditable="true" id="tbl_r6_5"></td><td contenteditable="true" id="tbl_r6_6"></td><td contenteditable="true" id="tbl_r6_7"></td><td contenteditable="true" id="tbl_r6_8"></td></tr>
+</table>
+<p>Formule: Bedrag = <input type="text" id="r6_formula" class="formula-input" placeholder="bijv. 2x + 1" /></p>
+<button onclick="checkRoom6()">Check</button>
+<p id="r6result"></p>
+<button onclick="goHome()">Terug</button>
 </div>
 
 <!-- Escape Room 7 -->
 <div class="room" id="room7">
-  <h2>Escape Room 7 – Exponenten & Wortels</h2>
-  <p>1) Wat is 4³?</p>
-  <input id="r7q1" />
-  <p>2) Wat is √64?</p>
-  <input id="r7q2" />
-  <p>3) Wat is 2⁵?</p>
-  <input id="r7q3" />
-  <p>4) Wat is de uitkomst van 3 × (2²)?</p>
-  <input id="r7q4" />
-  <p>5) Wat is √(9 + 16)?</p>
-  <input id="r7q5" />
-  <button onclick="checkRoom7()">Check</button>
-  <p id="r7result"></p>
-  <button onclick="goHome()">Terug</button>
+<h2>Escape Room 7 – Exponenten & Wortels</h2>
+<p>1) Wat is 4³?</p><input id="r7q1" />
+<p>2) Wat is √64?</p><input id="r7q2" />
+<p>3) Wat is 2⁵?</p><input id="r7q3" />
+<p>4) Wat is de uitkomst van 3 × (2²)?</p><input id="r7q4" />
+<p>5) Wat is √(9 + 16)?</p><input id="r7q5" />
+<button onclick="checkRoom7()">Check</button>
+<p id="r7result"></p>
+<button onclick="goHome()">Terug</button>
 </div>
 
 <script>
-// Algemene functies
-const correctCode = "4816937";
+// Eindcode
+const correctCode="4816937";
+
+// Rooms open/close
 function openRoom(n){
-  document.getElementById("home").style.display="none";
-  for(let i=1;i<=7;i++){ document.getElementById("room"+i).style.display="none"; }
-  document.getElementById("room"+n).style.display="block";
-  clearResults();
-  fillDefaultValues(n);
-  if(n===1) tekenGrafiek();
+    document.getElementById("home").style.display="none";
+    for(let i=1;i<=7;i++){document.getElementById("room"+i).style.display="none";}
+    document.getElementById("room"+n).style.display="block";
+    clearResults();
 }
 function goHome(){ location.reload(); }
-function clearResults(){
-  for(let i=1;i<=7;i++){
-    const res = document.getElementById("r"+i+"result");
-    if(res) res.innerText="";
-  }
-}
-function fillDefaultValues(room){
-  if(room===3){
-    for(let i=1;i<=8;i++) document.getElementById("tbl_r3_"+i).innerText="";
-    document.getElementById("r3_formula").value="";
-  }
-  if(room===6){
-    for(let i=1;i<=8;i++) document.getElementById("tbl_r6_"+i).innerText="";
-    document.getElementById("r6_formula").value="";
-  }
-}
+function clearResults(){ for(let i=1;i<=7;i++){ const res=document.getElementById("r"+i+"result"); if(res) res.innerText=""; } }
 
-// Verhaal & kladblok Room 1
-function openStory(){
-  const storyDiv = document.getElementById("story");
-  storyDiv.style.display = (storyDiv.style.display==="none")?"block":"none";
-}
+// Verhaal
+function openStory(){ document.getElementById("storyPopup").style.display="block"; }
+function closeStory(){ document.getElementById("storyPopup").style.display="none"; }
 
-// Grafiek Room 1
-function tekenGrafiek(){
-  new Chart(document.getElementById("grafiekVeulens"),{
-    type:"line",
-    data:{
-      labels:[0,1,2,3,4,5,6,7,8,9,10],
-      datasets:[
-        {label:"Misty", data:[25,31,37,43,49,55,61,67,73,79,85], borderColor:"red"},
-        {label:"Njelka", data:[35,39,43,47,51,55,59,63,67,71,75], borderColor:"orange"}
-      ]
-    }
-  });
-}
+// Room 1
+function checkRoom1(){ const answers=[6,5,12,8,5]; for(let i=1;i<=5;i++){ if(parseFloat(document.getElementById("r1q"+i).value)!==answers[i-1]){document.getElementById("r1result").innerText="❌ Probeer opnieuw"; return;} } document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>4</b>"; }
 
-// Room 1 Check
-function checkRoom1(){
-  const a=document.getElementById("r1q1").value.toLowerCase();
-  const b=parseFloat(document.getElementById("r1q2").value);
-  const c=parseFloat(document.getElementById("r1q3").value);
-  const d=document.getElementById("r1q4").value.toLowerCase();
-  const e=parseFloat(document.getElementById("r1q5").value);
-  if(a!=="njelka"||Math.abs(b-5)>0.5||Math.abs(c-55)>2||d!=="misty"||Math.abs(e-10)>1){
-    document.getElementById("r1result").innerText="❌ Probeer opnieuw";
-    return;
-  }
-  document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>4</b>";
-}
+// Room 2
+function checkRoom2(){ const answers=[0.8333,0.375,6,4]; for(let i=1;i<=4;i++){ let val=parseFloat(document.getElementById("r2q"+i).value); if(i<3 && Math.abs(val-answers[i-1])>0.01 || i>=3 && val!==answers[i-1]){document.getElementById("r2result").innerText="❌ Probeer opnieuw"; return;} } document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>8</b>"; }
 
-// Room 2 Check
-function checkRoom2(){
-  const answers=[0.8333,0.375,6,4];
-  for(let i=1;i<=4;i++){
-    let val=parseFloat(document.getElementById("r2q"+i).value);
-    if(i<3 && Math.abs(val-answers[i-1])>0.01){document.getElementById("r2result").innerText="❌ Probeer opnieuw";return;}
-    else if(i>=3 && val!==answers[i-1]){document.getElementById("r2result").innerText="❌ Probeer opnieuw";return;}
-  }
-  document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>8</b>";
-}
-
-// Room 3 Check
+// Room 3
 function checkRoom3(){
-  const meters=[]; const centimeters=[];
-  for(let i=1;i<=4;i++){
-    meters.push(parseFloat(document.getElementById("tbl_r3_"+i).innerText.replace(',','.')));
-    centimeters.push(parseFloat(document.getElementById("tbl_r3_"+(i+4)).innerText.replace(',','.')));
-    if(isNaN(meters[i-1]) || isNaN(centimeters[i-1])){document.getElementById("r3result").innerText="❌ Vul alle velden met getallen in."; return;}
-  }
-  for(let i=0;i<4;i++){ if(Math.abs(centimeters[i]-meters[i]*100)>0.01){document.getElementById("r3result").innerText="❌ Controleer je omrekening van meter naar centimeter."; return; } }
-  const formulaInput=document.getElementById("r3_formula").value.replace(/\s/g,'').toLowerCase();
-  const correctFormulas=["x*100","x×100","x100"];
-  if(!correctFormulas.includes(formulaInput)){document.getElementById("r3result").innerText="❌ Formule klopt niet. Probeer: x * 100"; return;}
-  document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>1</b>";
+    const meters=[], centimeters=[];
+    for(let i=1;i<=4;i++){ meters.push(parseFloat(document.getElementById("tbl_r3_"+i).innerText.replace(',','.'))); centimeters.push(parseFloat(document.getElementById("tbl_r3_"+(i+4)).innerText.replace(',','.'))); }
+    for(let i=0;i<4;i++){ if(isNaN(meters[i])||isNaN(centimeters[i])||Math.abs(centimeters[i]-meters[i]*100)>0.01){document.getElementById("r3result").innerText="❌ Controleer je tabel"; return;}}
+    const formula=document.getElementById("r3_formula").value.replace(/\s/g,'').toLowerCase();
+    if(!["x*100","x×100","x100"].includes(formula)){document.getElementById("r3result").innerText="❌ Formule klopt niet"; return;}
+    document.getElementById("r3result").innerHTML="✅ Jouw cijfer: <b>1</b>";
 }
 
-// Room 4 Check
-function checkRoom4(){
-  const answers=[60,135,120,85];
-  for(let i=1;i<=4;i++){
-    let val=parseFloat(document.getElementById("r4q"+i).value);
-    if(Math.abs(val-answers[i-1])>0.1){document.getElementById("r4result").innerText="❌ Probeer opnieuw"; return;}
-  }
-  document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>9</b>";
-}
+// Room 4
+function checkRoom4(){ const answers=[60,135,120,85]; for(let i=1;i<=4;i++){ if(Math.abs(parseFloat(document.getElementById("r4q"+i).value)-answers[i-1])>0.1){document.getElementById("r4result").innerText="❌ Probeer opnieuw"; return;} } document.getElementById("r4result").innerHTML="✅ Jouw cijfer: <b>9</b>"; }
 
-// Room 5 Check
-function checkRoom5(){
-  const answers=[24,117,45];
-  for(let i=1;i<=3;i++){
-    let val=parseFloat(document.getElementById("r5q"+i).value);
-    if(Math.abs(val-answers[i-1])>0.1){document.getElementById("r5result").innerText="❌ Probeer opnieuw"; return;}
-  }
-  document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>5</b>";
-}
+// Room 5
+function checkRoom5(){ const answers=[24,117,45]; for(let i=1;i<=3;i++){ if(Math.abs(parseFloat(document.getElementById("r5q"+i).value)-answers[i-1])>0.1){document.getElementById("r5result").innerText="❌ Probeer opnieuw"; return;} } document.getElementById("r5result").innerHTML="✅ Jouw cijfer: <b>6</b>"; }
 
-// Room 6 Check
-function checkRoom6(){
-  const table=[2,4,12,24]; const table2=[3,6,18,36];
-  for(let i=0;i<4;i++){
-    let val=parseFloat(document.getElementById("tbl_r6_"+(i+1)).innerText.replace(',','.'));
-    if(Math.abs(val-table[i])>0.01){document.getElementById("r6result").innerText="❌ Fout bij gewichtsgroei"; return; }
-    val=parseFloat(document.getElementById("tbl_r6_"+(i+5)).innerText.replace(',','.'));
-    if(Math.abs(val-table2[i])>0.01){document.getElementById("r6result").innerText="❌ Fout bij bedragen"; return; }
-  }
-  const formula=document.getElementById("r6_formula").value.replace(/\s/g,'').toLowerCase();
-  if(!["2*x","3*x","x*2"].includes(formula)){document.getElementById("r6result").innerText="❌ Formule klopt niet"; return;}
-  document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>3</b>";
-}
+// Room 6
+function checkRoom6(){ const weights=[2,4,12,24], amounts=[1,2,6,12]; for(let i=1;i<=4;i++){ if(parseFloat(document.getElementById("tbl_r6_"+i).innerText)!=weights[i-1]||parseFloat(document.getElementById("tbl_r6_"+(i+4)).innerText)!=amounts[i-1]){document.getElementById("r6result").innerText="❌ Controleer tabel"; return;} } document.getElementById("r6result").innerHTML="✅ Jouw cijfer: <b>7</b>"; }
 
-// Room 7 Check
-function checkRoom7(){
-  const answers=[64,8,32,12,5];
-  for(let i=1;i<=5;i++){
-    let val=parseFloat(document.getElementById("r7q"+i).value);
-    if(val!==answers[i-1]){document.getElementById("r7result").innerText="❌ Probeer opnieuw"; return;}
-  }
-  document.getElementById("r7result").innerHTML="✅ Jouw cijfer: <b>7</b>";
-}
+// Room 7
+function checkRoom7(){ const answers=[64,8,32,12,5]; for(let i=1;i<=5;i++){ if(parseFloat(document.getElementById("r7q"+i).value)!=answers[i-1]){document.getElementById("r7result").innerText="❌ Probeer opnieuw"; return;} } document.getElementById("r7result").innerHTML="✅ Jouw cijfer: <b>7</b>"; }
 
-// Eindcode check
-function checkFinal(){
-  const val=document.getElementById("finalCode").value;
-  if(val===correctCode){document.getElementById("victory").innerHTML="🎉🎉 Gefeliciteerd! Je hebt alle escape rooms opgelost en ontsnapt! 🎉🎉";}
-  else{document.getElementById("victory").innerHTML="❌ Foute code, probeer opnieuw.";}
-}
+// Eindcode
+function checkFinal(){ if(document.getElementById("finalCode").value===correctCode){document.getElementById("victory").innerText="🎉 Ontsnapt!";} else{document.getElementById("victory").innerText="❌ Foute code";}}
 </script>
+
 </body>
 </html>
