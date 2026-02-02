@@ -50,6 +50,7 @@
   button:hover { background: #ff1e1e; }
   .success { color: #22c55e; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 8px black; }
   canvas { margin-top: 20px; }
+  table { margin: 10px auto; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -60,7 +61,7 @@
   <p><b>Los alle escape rooms op en verzamel de cijfers om te ontsnappen!</b></p>
 
   <button onclick="openRoom(1)">Escape Room 1 – De Veulens</button>
-  <button onclick="openRoom(2)">Escape Room 2 – Breuken en Verhoudingen</button>
+  <button onclick="openRoom(2)">Escape Room 2 – Groei in Tabel</button>
   <button onclick="openRoom(3)">Escape Room 3 – Omrekeningen & Tabellen</button>
   <button onclick="openRoom(4)">Escape Room 4 – Kortingen en Procenten</button>
   <button onclick="openRoom(5)">Escape Room 5 – Procenten Berekeningen</button>
@@ -82,8 +83,7 @@
     Je bent verdwaald in de legendarische Pyramide van de Duivel. 
     Overal om je heen zijn oude raadsels en gevaarlijke puzzels. 
     Alleen door de mysteries van wiskunde op te lossen kun je de sleutel vinden om te ontsnappen. 
-    Elke escape room geeft een cijfer dat deel uitmaakt van de uiteindelijke code. 
-    Let goed op, want één fout kan je hele ontsnapping vertragen!
+    Elke escape room geeft een cijfer dat deel uitmaakt van de uiteindelijke code.
   </p>
   <button onclick="goHome()">Terug</button>
 </div>
@@ -118,8 +118,43 @@
   <button onclick="goHome()">Terug</button>
 </div>
 
-<!-- Escape Room 2 t/m 7 (kort gehouden) -->
-<div class="room" id="room2"><h2>Escape Room 2 – Breuken en Verhoudingen</h2><p>Ongewijzigd</p><button onclick="goHome()">Terug</button></div>
+<!-- Escape Room 2 – Groei in Tabel -->
+<div class="room" id="room2">
+  <h2>Escape Room 2 – Groei in Tabel 📊</h2>
+
+  <p>Twee veulens worden elke maand gewogen.</p>
+
+  <table border="1" cellpadding="6">
+    <tr>
+      <th>Maanden</th>
+      <th>Rex (kg)</th>
+      <th>Nova (kg)</th>
+    </tr>
+    <tr><td>0</td><td>30</td><td>36</td></tr>
+    <tr><td>1</td><td>35</td><td>40</td></tr>
+    <tr><td>2</td><td>40</td><td>44</td></tr>
+    <tr><td>3</td><td>45</td><td>48</td></tr>
+    <tr><td>4</td><td>50</td><td>52</td></tr>
+  </table>
+
+  <p>a) Hoeveel kg komt <b>Rex</b> per maand aan?</p>
+  <input id="r2q1">
+
+  <p>b) Hoeveel kg komt <b>Nova</b> per maand aan?</p>
+  <input id="r2q2">
+
+  <p>c) In welke maand zijn Rex en Nova even zwaar?</p>
+  <input id="r2q3">
+
+  <p>d) Hoeveel kg wegen ze dan?</p>
+  <input id="r2q4">
+
+  <button onclick="checkRoom2()">Check</button>
+  <p id="r2result"></p>
+  <button onclick="goHome()">Terug</button>
+</div>
+
+<!-- Overige kamers ongewijzigd -->
 <div class="room" id="room3"><h2>Escape Room 3 – Omrekeningen & Tabellen</h2><p>Ongewijzigd</p><button onclick="goHome()">Terug</button></div>
 <div class="room" id="room4"><h2>Escape Room 4 – Kortingen en Procenten</h2><p>Ongewijzigd</p><button onclick="goHome()">Terug</button></div>
 <div class="room" id="room5"><h2>Escape Room 5 – Procenten Berekeningen</h2><p>Ongewijzigd</p><button onclick="goHome()">Terug</button></div>
@@ -163,6 +198,19 @@ function checkRoom1(){
   document.getElementById("r1result").innerHTML="✅ Jouw cijfer: <b>4</b>";
 }
 
+function checkRoom2(){
+  const a=parseFloat(document.getElementById("r2q1").value);
+  const b=parseFloat(document.getElementById("r2q2").value);
+  const c=parseFloat(document.getElementById("r2q3").value);
+  const d=parseFloat(document.getElementById("r2q4").value);
+
+  if(a!==5||b!==4||c!==2||d!==40){
+    document.getElementById("r2result").innerText="❌ Probeer opnieuw";
+    return;
+  }
+  document.getElementById("r2result").innerHTML="✅ Jouw cijfer: <b>8</b>";
+}
+
 function tekenGrafiek(){
   new Chart(document.getElementById("grafiekVeulens"),{
     type:"line",
@@ -188,5 +236,3 @@ function checkFinal(){
 </body>
 </html>
 
-</body>
-</html>
